@@ -1,0 +1,44 @@
+---
+title: Agenda
+subtitle: "Getting acquainted with R: Florida State University, June 21-22"
+author: |
+  | Daniel Anderson
+  | University of Oregon
+output: pdf_document
+---
+
+# Day 1
+
+**9:00 - 9:15:** Introduction (who I am, what I do)
+
+**9:15 - 10:15:** Getting started with R, plus an overview of what we'll cover over the two days
+
+**10:15 - 10:30:** Break
+
+**10:30 - 12:00:** Object assignment, reading and writing data, vectors, matrices, and subsetting
+
+**12:00 - 1:00:** Lunch
+
+**1:00 - 2:45:** Data visualization with base graphics (and a few examples from non-*ggplot2* packages)
+
+**2:45 - 3:00:** Break
+
+**3:00 - 5:00:** A complete, applied, example
+
+# Day 2
+
+**9:00 - 10:15:** Introduction to R Markdown/dynamic document generation
+
+**10:15 - 10:30:** Break
+
+**10:30 - 12:00:** Plotting with *ggplot* (and a brief look toward more advanced visualizations)
+
+**12:00 - 1:00:** Lunch
+
+**1:00 - 2:45:** Functions
+
+**2:45 - 3:00:** Break
+
+**3:00 - 4:45:** Loops
+
+**4:45 - 5:00:** Wrapping up, and evaluations
