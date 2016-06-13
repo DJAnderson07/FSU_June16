@@ -1691,7 +1691,7 @@ log2
 <pre><code class="r">getwd()
 </code></pre>
 
-<pre><code>## [1] &quot;/Users/Daniel/Dropbox/Teaching/FSU_June16&quot;
+<pre><code>## [1] &quot;/Users/Daniel/Dropbox/Teaching/FSU_June16/day1&quot;
 </code></pre>
 
   </article>
@@ -1717,7 +1717,8 @@ log2
 <pre><code class="r">list.files()
 </code></pre>
 
-<pre><code>## [1] &quot;agenda&quot;  &quot;data&quot;    &quot;day1&quot;    &quot;day2&quot;    &quot;LICENSE&quot;
+<pre><code>## [1] &quot;afternoon.html&quot; &quot;afternoon.md&quot;   &quot;afternoon.Rmd&quot;  &quot;assets&quot;        
+## [5] &quot;libraries&quot;      &quot;morning.Rmd&quot;
 </code></pre>
 
 <p>The <code>list.files()</code> function shows what R &quot;sees&quot;.</p>
@@ -1923,10 +1924,17 @@ Fairly good blog post: </span>
     <pre><code class="r">getwd()
 </code></pre>
 
-<pre><code>## [1] &quot;/Users/Daniel/Dropbox/Teaching/FSU_June16&quot;
+<pre><code>## [1] &quot;/Users/Daniel/Dropbox/Teaching/FSU_June16/day1&quot;
 </code></pre>
 
 <pre><code class="r">cars &lt;- read.csv(&quot;./data/cars.csv&quot;)
+</code></pre>
+
+<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;./data/cars.csv&#39;: No such
+## file or directory
+</code></pre>
+
+<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection
 </code></pre>
 
 <ul>
@@ -2067,7 +2075,16 @@ Fairly good blog post: </span>
 
 <pre><code class="r">trees &lt;- read.table(&quot;./data/trees.txt&quot;, sep = &quot;|&quot;, na = &quot;999&quot;, 
   col.names = c(&quot;Girth&quot;, &quot;Height&quot;, &quot;Volume&quot;))
-head(trees)
+</code></pre>
+
+<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;./data/trees.txt&#39;: No such
+## file or directory
+</code></pre>
+
+<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection
+</code></pre>
+
+<pre><code class="r">head(trees)
 </code></pre>
 
 <pre><code>##   Girth Height Volume
@@ -2104,14 +2121,7 @@ head(trees)
 violence &lt;- read.spss(&quot;./data/USViolentActs.sav&quot;, to.data.frame = TRUE)
 </code></pre>
 
-<pre><code>## Warning in read.spss(&quot;./data/USViolentActs.sav&quot;, to.data.frame = TRUE): ./
-## data/USViolentActs.sav: Unrecognized record type 7, subtype 18 encountered
-## in system file
-</code></pre>
-
-<pre><code>## Warning in read.spss(&quot;./data/USViolentActs.sav&quot;, to.data.frame = TRUE): ./
-## data/USViolentActs.sav: Unrecognized record type 7, subtype 24 encountered
-## in system file
+<pre><code>## Error in read.spss(&quot;./data/USViolentActs.sav&quot;, to.data.frame = TRUE): unable to open file: &#39;No such file or directory&#39;
 </code></pre>
 
 <pre><code class="r">head(violence)
@@ -3638,20 +3648,20 @@ a
   <pre><code>## , , Score = 0
 ## 
 ##           Male Female
-## Incorrect   52     42
-## Correct     15     43
+## Incorrect   41     48
+## Correct     64     48
 ## 
 ## , , Score = 1
 ## 
 ##           Male Female
-## Incorrect   33     63
-## Correct     17     41
+## Incorrect   37     40
+## Correct     47     63
 ## 
 ## , , Score = 2
 ## 
 ##           Male Female
-## Incorrect   59     37
-## Correct     56     48
+## Incorrect   77     71
+## Correct     71     48
 </code></pre>
 
 </div>
@@ -3659,20 +3669,20 @@ a
   <pre><code>## , , Score = 3
 ## 
 ##           Male Female
-## Incorrect   43     53
-## Correct     19     41
+## Incorrect   41     46
+## Correct     46     53
 ## 
 ## , , Score = 4
 ## 
 ##           Male Female
-## Incorrect   26     49
-## Correct     11     55
+## Incorrect   49     38
+## Correct     86     46
 ## 
 ## , , Score = 5
 ## 
 ##           Male Female
-## Incorrect   31     47
-## Correct     55     46
+## Incorrect   76     62
+## Correct     68     49
 </code></pre>
 
 </div>

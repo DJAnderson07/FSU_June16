@@ -1315,7 +1315,7 @@ getwd()
 ```
 
 ```
-## [1] "/Users/Daniel/Dropbox/Teaching/FSU_June16"
+## [1] "/Users/Daniel/Dropbox/Teaching/FSU_June16/day1"
 ```
 
 ------ 
@@ -1335,7 +1335,8 @@ list.files()
 ```
 
 ```
-## [1] "agenda"  "data"    "day1"    "day2"    "LICENSE"
+## [1] "afternoon.html" "afternoon.md"   "afternoon.Rmd"  "assets"        
+## [5] "libraries"      "morning.Rmd"
 ```
 The `list.files()` function shows what R "sees".
 
@@ -1459,11 +1460,20 @@ getwd()
 ```
 
 ```
-## [1] "/Users/Daniel/Dropbox/Teaching/FSU_June16"
+## [1] "/Users/Daniel/Dropbox/Teaching/FSU_June16/day1"
 ```
 
 ```r
 cars <- read.csv("./data/cars.csv")
+```
+
+```
+## Warning in file(file, "rt"): cannot open file './data/cars.csv': No such
+## file or directory
+```
+
+```
+## Error in file(file, "rt"): cannot open the connection
 ```
 * Use `head()` `tail()` and `str()` to check that the data were read in properly
 
@@ -1580,6 +1590,18 @@ summary(cars)
 ```r
 trees <- read.table("./data/trees.txt", sep = "|", na = "999", 
   col.names = c("Girth", "Height", "Volume"))
+```
+
+```
+## Warning in file(file, "rt"): cannot open file './data/trees.txt': No such
+## file or directory
+```
+
+```
+## Error in file(file, "rt"): cannot open the connection
+```
+
+```r
 head(trees)
 ```
 
@@ -1606,15 +1628,7 @@ violence <- read.spss("./data/USViolentActs.sav", to.data.frame = TRUE)
 ```
 
 ```
-## Warning in read.spss("./data/USViolentActs.sav", to.data.frame = TRUE): ./
-## data/USViolentActs.sav: Unrecognized record type 7, subtype 18 encountered
-## in system file
-```
-
-```
-## Warning in read.spss("./data/USViolentActs.sav", to.data.frame = TRUE): ./
-## data/USViolentActs.sav: Unrecognized record type 7, subtype 24 encountered
-## in system file
+## Error in read.spss("./data/USViolentActs.sav", to.data.frame = TRUE): unable to open file: 'No such file or directory'
 ```
 
 ```r
@@ -2922,20 +2936,20 @@ This is a 3-dimensional array, but more dimensions are possible
 ## , , Score = 0
 ## 
 ##           Male Female
-## Incorrect   52     42
-## Correct     15     43
+## Incorrect   41     48
+## Correct     64     48
 ## 
 ## , , Score = 1
 ## 
 ##           Male Female
-## Incorrect   33     63
-## Correct     17     41
+## Incorrect   37     40
+## Correct     47     63
 ## 
 ## , , Score = 2
 ## 
 ##           Male Female
-## Incorrect   59     37
-## Correct     56     48
+## Incorrect   77     71
+## Correct     71     48
 ```
 
 *** =right
@@ -2945,20 +2959,20 @@ This is a 3-dimensional array, but more dimensions are possible
 ## , , Score = 3
 ## 
 ##           Male Female
-## Incorrect   43     53
-## Correct     19     41
+## Incorrect   41     46
+## Correct     46     53
 ## 
 ## , , Score = 4
 ## 
 ##           Male Female
-## Incorrect   26     49
-## Correct     11     55
+## Incorrect   49     38
+## Correct     86     46
 ## 
 ## , , Score = 5
 ## 
 ##           Male Female
-## Incorrect   31     47
-## Correct     55     46
+## Incorrect   76     62
+## Correct     68     49
 ```
 
 ----

@@ -847,13 +847,13 @@ Removing the last two values
 v[-c(7:8)]
 v[-7:-8]
 ```
-```{r, echo = FALSE}
+```{r gp4, echo = FALSE}
 v[-c(7:8)]
 ```
 
 Values greater than 15
 
-```{r gp4}
+```{r gp5}
 v[v > 15]
 ```
 
