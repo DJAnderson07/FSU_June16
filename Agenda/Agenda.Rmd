@@ -11,11 +11,11 @@ output: pdf_document
 
 **9:00 - 9:15:** Introduction (who I am, what I do)
 
-**9:15 - 10:15:** Getting started with R, plus an overview of what we'll cover over the two days
+**9:15 - 10:15:** Getting started with R, vectors, matrices, and subsetting
 
 **10:15 - 10:30:** Break
 
-**10:30 - 12:00:** Object assignment, reading and writing data, vectors, matrices, and subsetting
+**10:30 - 12:00:** Directory management, reading and writing data, and data structures
 
 **12:00 - 1:00:** Lunch
 
@@ -23,7 +23,7 @@ output: pdf_document
 
 **2:45 - 3:00:** Break
 
-**3:00 - 5:00:** A complete, applied, example
+**3:00 - 5:00:** A quick note on lists, plus a complete, applied, example
 
 # Day 2
 
