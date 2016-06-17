@@ -1,0 +1,95 @@
+---
+title: Example Markdown document
+author: Daniel Anderson
+date: "`r Sys.Date()`"
+bibliography: exampleBib.bib
+output: html_document
+---
+
+```{r setup, include = FALSE}
+library(knitr)
+
+# Set global chunk options
+opts_chunk$set(cache = TRUE, cache.comments = FALSE, autodep = TRUE)
+
+# Determine caching dependencies automatically
+dep_auto()
+```
+
+# Level 1
+
+## Level 2
+
+### Level 3 (etc.)
+
+
+* Unordered list
+  - inset
+    + inset more
+  - etc.
+
+1. Ordered list
+  a. blah blah
+2. More stuff
+
+```{r ex_rCalc1}
+a <- 3
+b <- 5
+
+a + b * (exp(a)/b)
+```
+
+This is an example of inline code, where I want to refer to the sum of `a` and
+  `b`, which is `r a + b`.
+
+
+You can show code without evaluating it, using `eval = FALSE`. 
+
+```{r ex_rCalc2, eval = FALSE}
+a + b * (exp(a)/b)
+```
+
+Alternatively, you can evaluate the code without displaying it
+
+```{r ex_plotExample, echo = FALSE}
+data(mtcars)
+with(mtcars, plot(mpg, hp, 
+	xlab = "Miles Per Gallon", 
+	ylab = "Horsepower",
+	main = "Relation between Miles Per Gallon and Horsepower"))
+```
+
+### Some example citations
+
+According to @Briggs11...
+
+
+... which is critical to students' education [see @Baldwin2014; @Caruso2000]
+
+
+"Stability of school-building accountability scores and gains" [@Linn02, p. 9]
+
+
+Goldhaber & Hansen question the validity [-@Goldhaber08]...
+
+
+### Some tables
+
+```{r kable, results = "markup"}
+id <- rep(1:3, each = 2)
+condition <- rep(c("A", "B"), 3)
+score <- rnorm(6, 10, 3)
+kable(data.frame(id, condition, score),
+  col.names = c("Participant", "Treatment", "Score"),
+  align = "l")
+
+data(mtcars)
+mod <- lm(mpg ~ ., data = mtcars) # note the shortcut to say "all variables"
+pander(mod, style = "rmarkdown")
+
+pander(lm(Sepal.Width ~ Species, data = iris),
+ covariate.labels = c("Versicolor", "Virginica"),
+ style = "rmarkdown")
+```
+
+# References
