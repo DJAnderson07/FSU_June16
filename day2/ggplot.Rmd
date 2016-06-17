@@ -1,8 +1,8 @@
 ---
 title       : "Plotting with ggplot2"
-subtitle    : Week 8.1
+subtitle    : "Day 2: Morning, Session 2"
 author      : Daniel Anderson
-job         : CourseR
+job         : "R Training: Florida State University, June 22, 2016"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : zenburn      # 

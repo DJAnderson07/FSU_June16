@@ -1,6 +1,6 @@
 ---
 title       : "Dynamic Documents: An Introduction"
-subtitle	  : "Day 2: Morning"
+subtitle	  : "Day 2: Morning, Session 1"
 author      : Daniel Anderson
 job         : "R Training: Florida State University, June 22, 2016"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
