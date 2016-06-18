@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Documents: An Introduction</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Dynamic Documents: An Introduction">
+  <meta name="author" content="Daniel Anderson">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/zenburn.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Dynamic Documents: An Introduction</h1>
+    <h2>Day 2: Morning, Session 1</h2>
+    <p>Daniel Anderson<br/>R Training: Florida State University, June 22, 2016</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+em {
+  font-style: italic
+}
+</style>
+
+<style>
+strong {
+  font-weight: bold;
+}
+</style>
+
+<h2>A Brief Intro to dynamic documents</h2>
+
+<p>(focusing mostly on R Markdown)</p>
+
+<p><img src="../assets/img/dynamicDocumentsBook.png" alt="ddbook"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>What is R Markdown</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>Simple language for converting R code/output into other formats, most notably 
+HTML and PDF</li>
+<li>These slides were produced using a variant of Markdown</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "center">
+<img src = ../assets/img/markdownPDF.png width = 500 height = 600>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Why produce dynamic documents?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Reproducible research principles
+
+<ul>
+<li>Increase transparency</li>
+</ul></li>
+<li>Can (eventually) be more efficient</li>
+<li>Simple for simple tasks (like homeworks)
+
+<ul>
+<li>Complexity increases as you ask more of it</li>
+</ul></li>
+</ul>
+
+<p>Before we get too far...</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-4" style="background:;">
+  <hgroup>
+    <h1>Reproducible research</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>A couple caveats</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Much of what I&#39;m going to be discussing is largely <em>not</em> how I have
+interacted with research to this point. Instead, it represents an ideal that I have only recently begun working towards.</li>
+<li>None of what I will talk about should be taken as a referendum on you or
+your current practices. However, I hope to convince you that you should be working toward the reproducible research ideal, and that, as a field, we should be moving toward reproducible research being the <em>minimal standard</em>.</li>
+<li>I will be focusing on reproducible research with R. Other options are
+available but, in my view, none are as clear, comprehensive, and easy to implement as the tools at your disposal through R.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>What is reproducible research?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>Replicability</strong> is the gold standard for research. Ideally, most research
+would be verified through replication. </li>
+<li>Reproducibility represents a minimal standard, which itself can aid
+replication (tremendously), by conducting and documenting the research sufficiently that <strong>an independent researcher could reproduce all the results from a study</strong>, provided the data were available</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Why should we care?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Reproducibility as an ethical standard
+
+<ul>
+<li>More transparency</li>
+<li>More potential for results to be verified (and errors found/corrected)</li>
+</ul></li>
+<li>If your work <strong>is not</strong> reproducible, it is usually not truly replicable.</li>
+<li>If your work <strong>is</strong> replicable, then others have a &quot;recipe&quot; for replication</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Are journal articles research?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Initially, we may think of journal articles as research, but really the
+research is everything that went into the article, not the article itself. </li>
+<li>Some (Buckheit &amp; Donoho, 2015) conceive of the article as the
+&quot;advertisement&quot;.</li>
+<li>If all we have is the advertisement, can we really fully understand the
+steps and decisions made during the research?
+
+<ul>
+<li>In large-scale data analysis, the answer is generally &quot;no&quot;.<br></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Tangential benefits</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Striving toward reproducible research will:</p>
+
+<ul>
+<li>Make your own code more efficient/easily interpretable
+
+<ul>
+<li>Can help with collaboration on a project</li>
+</ul></li>
+<li>Reduce errors</li>
+<li>Increase efficiency by not having to redo tables and figures with each tweak
+to a model.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>What does the process actually look like?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Start with a basic text document (not Word, text)</li>
+<li>Use the text document to write your article</li>
+<li>Embed code within the text document that corresponds to your analysis. Note
+this is not just copying the code in. The code should be live and what you&#39;re working with while conducting your research.</li>
+<li>Render the document into a different format (pdf, html, etc.).
+
+<ul>
+<li>Select which code (if any) will be displayed</li>
+<li>Build tables of results and plots to be produced</li>
+</ul></li>
+<li>Readers can then read the &quot;advertisement&quot;, but if they are interested 
+in reproducing your results (maybe because they disagree with you, or they think your results are weird and want to clearly see all the steps you took), they can access the text file that contains the computer code.</li>
+<li>The end result is a single product that has the advertisement and the
+research process embedded.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Other reasons dynamic documents are useful</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Outside of reproducibility, you may want to use R Markdown to:</p>
+
+<ul>
+<li>Produce slides
+
+<ul>
+<li>Just be careful, I have a horror story</li>
+</ul></li>
+<li>Keep track of your analysis (notes, essentially), even if you end up using 
+something like Word</li>
+<li>Share code with others</li>
+<li>Quickly share results with others</li>
+<li>etc... ideas?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-12" style="background:;">
+  <hgroup>
+    <h1>On to the mechanics</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>YAML Front Matter</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Not explicitly necessary, but generally helpful</p>
+
+<pre><code>---
+title: Example Markdown document
+author: Daniel Anderson
+date: &quot;2015-09-17&quot;
+---
+</code></pre>
+
+<p><img src="../assets/img/frontMatter.png" alt="frontMatter"></p>
+
+<ul>
+<li>Three dashes before and after the YAML fields</li>
+<li>Case sensitive</li>
+<li>Many other fields are possible.
+
+<ul>
+<li>For example, you may want to include an <code>output:</code> argument (<code>pdf_document</code>,
+<code>html_document</code>, <code>word_document</code>). Must be specified as it is rendered, if
+not supplied.</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Headings and Lists</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <pre><code># Level 1
+## Level 2 
+### Level 3 (etc.)
+</code></pre>
+
+<pre><code>* Unordered list
+  - inset
+    + inset more
+  - etc.
+
+1. Ordered list
+  a. blah blah
+2. More stuff
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="../assets/img/headersLists.png" alt="headersLists"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Code chunks</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Start a code chunk with ```{r chunkName, chunkOptions}, then produce some r code, then close the 
+  chunk with three additional back ticks ```.</p>
+
+<p><img src="../assets/img/codeChunk1.png" alt="codechunk1"></p>
+
+<pre><code class="r">a &lt;- 3
+b &lt;- 5
+
+a + b * (exp(a)/b)
+</code></pre>
+
+<pre><code>## [1] 23.08554
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>A few select chunk options</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="left">Options</th>
+<th align="left">Arguments</th>
+<th align="left">Default</th>
+<th align="left">Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">eval</td>
+<td align="left">logical</td>
+<td align="left">TRUE</td>
+<td align="left">Evaluate the code?</td>
+</tr>
+<tr>
+<td align="left">echo</td>
+<td align="left">logical</td>
+<td align="left">TRUE</td>
+<td align="left">Show the code?</td>
+</tr>
+<tr>
+<td align="left">results</td>
+<td align="left">markup, asis, hold, hide</td>
+<td align="left">markup</td>
+<td align="left">Render the results</td>
+</tr>
+<tr>
+<td align="left">warning</td>
+<td align="left">logical</td>
+<td align="left">TRUE</td>
+<td align="left">Print warnings?</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">logical</td>
+<td align="left">TRUE</td>
+<td align="left">Preserve errors? (if FALSE, quit)</td>
+</tr>
+<tr>
+<td align="left">message</td>
+<td align="left">logical</td>
+<td align="left">TRUE</td>
+<td align="left">Print any messages?</td>
+</tr>
+<tr>
+<td align="left">include</td>
+<td align="left">logical</td>
+<td align="left">TRUE</td>
+<td align="left">Include any of the code or output or code?</td>
+</tr>
+<tr>
+<td align="left">tidy</td>
+<td align="left">logical</td>
+<td align="left">FALSE</td>
+<td align="left">Tidy code? (see formatR package)</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h1>(and a few more)</h1>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">Options</th>
+<th align="left">Arguments</th>
+<th align="left">Default</th>
+<th align="left">Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">9</td>
+<td align="left">cache</td>
+<td align="left">logical, 0:3</td>
+<td align="left">FALSE</td>
+<td align="left">Cache code chunks?</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left">cache.comments</td>
+<td align="left">logical</td>
+<td align="left">NULL</td>
+<td align="left">Cache invalidated by comment changes?</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left">dependson</td>
+<td align="left">char, num</td>
+<td align="left">NULL</td>
+<td align="left">Current chunk depend on prior cached chunks?</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left">autodep</td>
+<td align="left">logical</td>
+<td align="left">FALSE</td>
+<td align="left">Should dependencies be determined automatically? (if TRUE, no need for dependson)</td>
+</tr>
+<tr>
+<td align="left">13</td>
+<td align="left">fig.height/fig.width</td>
+<td align="left">numeric</td>
+<td align="left">7, 7</td>
+<td align="left">Height and width of figure</td>
+</tr>
+<tr>
+<td align="left">14</td>
+<td align="left">fig.show</td>
+<td align="left">asis, hold, animate, hide</td>
+<td align="left">asis</td>
+<td align="left">How the figure should be displayed</td>
+</tr>
+<tr>
+<td align="left">15</td>
+<td align="left">interval</td>
+<td align="left">numeric</td>
+<td align="left">1</td>
+<td align="left">Interval (speed) When fig.show = &#39;animate&#39;</td>
+</tr>
+</tbody></table>
+
+<p>For complete documentation, see <a href="http://yihui.name/knitr/options/">http://yihui.name/knitr/options/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>echo and eval</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>You can show code without evaluating it, using <code>eval = FALSE</code>. </p>
+
+<div align = "left">
+<img src = ../assets/img/codeChunk2.png width = 400 height = 100>
+</div>
+
+<pre><code class="r">a + b * (exp(a)/b)
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Alternatively, you can evaluate the code without displaying it, using <code>echo = 
+  FALSE</code>.</p>
+
+<div align = "left">
+<img src = ../assets/img/codeChunk3.png width = 550 height = 150>
+</div>
+
+<p><img src="assets/fig/plotExample-1.png" alt="plot of chunk plotExample"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>warning</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <h1>Warning = FALSE</h1>
+
+<pre><code class="r">ggplot(msleep, 
+  aes(sleep_rem, sleep_total)) + 
+  geom_point()
+</code></pre>
+
+<p><img src="assets/fig/ggplotWarning2-1.png" alt="plot of chunk ggplotWarning2">
+Warning is printed to the console when rendering.</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h1>Warning = TRUE</h1>
+
+<pre><code class="r">ggplot(msleep, 
+  aes(sleep_rem, sleep_total)) + 
+  geom_point()
+</code></pre>
+
+<pre><code>## Warning: Removed 22 rows containing missing values (geom_point).
+</code></pre>
+
+<p><img src="assets/fig/ggplotWarning1-1.png" alt="plot of chunk ggplotWarning1"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Show errors</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Default</h1>
+
+<pre><code class="r">ggplot(msleep, 
+  aes(sleep, sleep_total)) + 
+  geom_point()
+</code></pre>
+
+<pre><code>## Don&#39;t know how to automatically pick scale for object of type data.frame. Defaulting to continuous.
+</code></pre>
+
+<pre><code>## Error: Aesthetics must be either length 1 or the same as the data (83): x, y
+</code></pre>
+
+<p><br></p>
+
+<p>If <code>error = FALSE</code>, the document won&#39;t render if it encounters an error.</p>
+
+<p><img src="../assets/img/errorRendering.png" alt="errorRendering"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Message</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Some functions will return messages. You may want to suppress these.</p>
+
+<div style='float:left;width:48%;'>
+  <h1>message = FALSE</h1>
+
+<pre><code class="r">ggplot(msleep,
+  aes(sleep_total)) +
+  geom_histogram()
+</code></pre>
+
+<p><img src="assets/fig/messages2-1.png" alt="plot of chunk messages2"></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h1>message = TRUE</h1>
+
+<pre><code class="r">ggplot(msleep,
+  aes(sleep_total)) +
+  geom_histogram()
+</code></pre>
+
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+
+<p><img src="assets/fig/messages1-1.png" alt="plot of chunk messages1"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>tidy</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <h1>Tidy = FALSE</h1>
+
+<pre><code class="r">matRow&lt;-matrix(c(10,11,12,13,20,21,22,23,
+  30,31,32,33),nrow=3,ncol=4,byrow=TRUE)
+
+matRow&lt;-matrix(c(10,11,12,13,
+                 20,21,22,23,
+                 30,31,32,33),
+nrow=3,ncol=4,byrow=TRUE)
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h1>Tidy = TRUE</h1>
+
+<pre><code class="r">matRow &lt;- matrix(c(10, 11, 12, 13, 20, 21, 22, 23, 30, 31, 32, 33), nrow = 3, 
+    ncol = 4, byrow = TRUE)
+
+matRow &lt;- matrix(c(10, 11, 12, 13, 20, 21, 22, 23, 30, 31, 32, 33), nrow = 3, 
+    ncol = 4, byrow = TRUE)
+</code></pre>
+
+<p>(It can only do so much, and sometimes ends up looking worse. Follow a style!)</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>cache and dependencies</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Somewhat complicated</p>
+
+<ul>
+<li>When chunks take a long time to process, it is usually a good idea to <em>cache</em>
+them.
+
+<ul>
+<li>Create temporary files with the results of the chunk</li>
+<li>These files are then called when the document is rendered, and need not
+be re-run, provided <strong>nothing in the chunk has changed</strong>.</li>
+<li>Often, chunks may depend on the results of previous chunks. These are
+<em>dependencies</em>. All dependencies must then be updated, if a chunk with dependencies is updated.</li>
+<li>You can declare dependencies manually or automatically</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>cache</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="../assets/img/cacheFolders.png" alt="cacheFolders"></p>
+
+<ul>
+<li>Cache files are named according to your chunk names (why it&#39;s important to
+name your chunks)</li>
+<li>Note that some packages that use <em>knitr</em> (i.e., <em>slidify</em>, which was used to
+produce these slides), will cache for you automatically. And the slidify
+cache is in a hidden folder (which can be really annoying)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Declaring dependencies manually</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align = "left">
+<img src = ../assets/img/dependson.png width = 1000 height = 400>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">boys &lt;- c(25, 32, 11, 54)
+girls &lt;- c(30, 29, 22, 43)
+mean(boys)
+</code></pre>
+
+<pre><code>## [1] 30.5
+</code></pre>
+
+<pre><code class="r">mean(girls)
+</code></pre>
+
+<pre><code>## [1] 31
+</code></pre>
+
+<p>As can be seen, boys scored -0.5 points different than girls. Below is a histogram of each.</p>
+
+<pre><code class="r">par(mfrow = c(1,2))
+hist(boys)
+hist(girls)
+</code></pre>
+
+<p><img src="assets/fig/histograms-1.png" alt="plot of chunk histograms"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Setting global options</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In other words, change the default behavior</p>
+
+<pre><code class="r">opts_chunk$set(options)
+</code></pre>
+
+<p>For example, you can setup all chunks to be cached, and for the dependencies to be automatically determined, with the following code:</p>
+
+<pre><code class="r">opts_chunk$set(cache = TRUE, autodep = TRUE)
+
+dep_auto()
+</code></pre>
+
+<p>Note that <code>dep_auto()</code> is a function that must be run on its own (which finds the dependencies). </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <article data-timings="">
+    <p>In other cases you may wan to suppress all the code. For example, when preparing a report for somebody.</p>
+
+<pre><code class="r">opts_chunk$set(echo = FALSE)
+</code></pre>
+
+<p>You can always override the defaults (global options) within a particular chunk, e.g.</p>
+
+<p>```{r, chunkName, echo = TRUE}
+<br>
+<br>
+```</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>include</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="../assets/img/includeFALSE.png" alt="includeFALSE"></p>
+
+<p>The <code>include</code> argument is used to evaluate code that is not included in the
+document at all. For example, when setting up your global options.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>tables (very briefly)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Packages that can produce tables for R markdown (in order from least to most
+flexible)
+
+<ul>
+<li><em>knitr</em></li>
+<li><em>pander</em> </li>
+<li><em>xtable</em></li>
+</ul></li>
+</ul>
+
+<h1>Displaying tables</h1>
+
+<p>Change the <code>results</code> chunk option to &quot;asis&quot;</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>knitr::kable</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For very simple tables, use <code>kable</code> from the <em>knitr</em> package</p>
+
+<pre><code class="r">id &lt;- rep(1:3, each = 2)
+condition &lt;- rep(c(&quot;A&quot;, &quot;B&quot;), 3)
+score &lt;- rnorm(6, 10, 3)
+data &lt;- data.frame(id, condition, score)
+
+library(knitr)
+kable(data)
+</code></pre>
+
+<table><thead>
+<tr>
+<th align="right">id</th>
+<th align="left">condition</th>
+<th align="right">score</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">A</td>
+<td align="right">8.941231</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="left">B</td>
+<td align="right">9.424647</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">A</td>
+<td align="right">9.292759</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">B</td>
+<td align="right">9.558533</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">A</td>
+<td align="right">6.450977</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">B</td>
+<td align="right">8.117230</td>
+</tr>
+</tbody></table>
+
+<div style='float:left;width:48%;'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>pander</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Great for producing summary tables.
+
+<ul>
+<li>Must specify <code>style = &quot;rmarkdown&quot;</code></li>
+</ul></li>
+<li>Doesn&#39;t seem to work well with <em>slidify</em> (not sure why).</li>
+<li>Hopefully we&#39;ll have time to look at this a bit with the example.</li>
+</ul>
+
+<pre><code class="r">library(pander)
+pander(lm(Sepal.Width ~ Species, data = iris), 
+    covariate.labels = c(&quot;Versicolor&quot; ,  &quot;Virginica&quot; ), 
+    style = &quot;rmarkdown&quot;)
+</code></pre>
+
+<p>|      &nbsp;       |  Estimate  |  Std. Error  |  t value  |  Pr(&gt;|t|)  |
+|:-----------------:|:----------:|:------------:|:---------:|:----------:|
+|  <strong>Versicolor</strong>   |   -0.658   |   0.06794    |  -9.685   | 1.832e-17  |
+|   <strong>Virginica</strong>   |   -0.454   |   0.06794    |  -6.683   | 4.539e-10  |
+|  <strong>(Intercept)</strong>  |   3.428    |   0.04804    |   71.36   | 5.708e-116 |</p>
+
+<p>Table: Fitting linear model: Sepal.Width ~ Species</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>xtable</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For <code>xtable</code>, you have to make sure you specify <code>results = &quot;asis&quot;</code>. </p>
+
+<p>If you&#39;re in a markup environment (what we&#39;ve been talking about), you have to also make sure you specify <code>type = &quot;html&quot;</code>.</p>
+
+<pre><code class="r">library(xtable)
+mat &lt;- round(matrix(c(0.9, 0.89, 200, 0.045, 2.0), c(1, 5)), 4) 
+rownames(mat) &lt;- &quot;$y_{t-1}$&quot;
+colnames(mat) &lt;- c(&quot;$R^2$&quot;, &quot;$\\bar{x}$&quot;, &quot;F-stat&quot;, &quot;S.E.E&quot;, &quot;DW&quot;) 
+mat &lt;- xtable(mat)
+print(mat, 
+  sanitize.text.function = function(x) {x},
+  type = &quot;html&quot;)
+</code></pre>
+
+<!-- html table generated in R 3.3.0 by xtable 1.8-2 package -->
+
+<!-- Fri Jun 17 20:37:33 2016 -->
+
+<table border=1>
+<tr> <th>  </th> <th> $R^2$ </th> <th> $\bar{x}$ </th> <th> F-stat </th> <th> S.E.E </th> <th> DW </th>  </tr>
+  <tr> <td align="right"> $y_{t-1}$ </td> <td align="right"> 0.90 </td> <td align="right"> 0.89 </td> <td align="right"> 200.00 </td> <td align="right"> 0.04 </td> <td align="right"> 2.00 </td> </tr>
+   </table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <article data-timings="">
+    <p>Same example, but without specifying <code>results = &quot;asis&quot;</code></p>
+
+<pre><code class="r">print(mat, 
+  sanitize.text.function = function(x) {x},
+  type = &quot;html&quot;)
+</code></pre>
+
+<pre><code>## &lt;!-- html table generated in R 3.3.0 by xtable 1.8-2 package --&gt;
+## &lt;!-- Fri Jun 17 20:37:33 2016 --&gt;
+## &lt;table border=1&gt;
+## &lt;tr&gt; &lt;th&gt;  &lt;/th&gt; &lt;th&gt; $R^2$ &lt;/th&gt; &lt;th&gt; $\bar{x}$ &lt;/th&gt; &lt;th&gt; F-stat &lt;/th&gt; &lt;th&gt; S.E.E &lt;/th&gt; &lt;th&gt; DW &lt;/th&gt;  &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; $y_{t-1}$ &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 0.90 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 0.89 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 200.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 0.04 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 2.00 &lt;/td&gt; &lt;/tr&gt;
+##    &lt;/table&gt;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Other options for results: <code>hold</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">m1 &lt;- lm(mpg ~ ., data = mtcars)
+coef(m1)
+coef(summary(m1))[, &quot;Std. Error&quot;]
+arm::display(m1)
+</code></pre>
+
+<pre><code>## (Intercept)         cyl        disp          hp        drat          wt 
+## 12.30337416 -0.11144048  0.01333524 -0.02148212  0.78711097 -3.71530393 
+##        qsec          vs          am        gear        carb 
+##  0.82104075  0.31776281  2.52022689  0.65541302 -0.19941925 
+## (Intercept)         cyl        disp          hp        drat          wt 
+## 18.71788443  1.04502336  0.01785750  0.02176858  1.63537307  1.89441430 
+##        qsec          vs          am        gear        carb 
+##  0.73084480  2.10450861  2.05665055  1.49325996  0.82875250 
+## lm(formula = mpg ~ ., data = mtcars)
+##             coef.est coef.se
+## (Intercept) 12.30    18.72  
+## cyl         -0.11     1.05  
+## disp         0.01     0.02  
+## hp          -0.02     0.02  
+## drat         0.79     1.64  
+## wt          -3.72     1.89  
+## qsec         0.82     0.73  
+## vs           0.32     2.10  
+## am           2.52     2.06  
+## gear         0.66     1.49  
+## carb        -0.20     0.83  
+## ---
+## n = 32, k = 11
+## residual sd = 2.65, R-Squared = 0.87
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>Same chunk, no hold</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">m1 &lt;- lm(mpg ~ ., data = mtcars)
+coef(m1)
+</code></pre>
+
+<pre><code>## (Intercept)         cyl        disp          hp        drat          wt 
+## 12.30337416 -0.11144048  0.01333524 -0.02148212  0.78711097 -3.71530393 
+##        qsec          vs          am        gear        carb 
+##  0.82104075  0.31776281  2.52022689  0.65541302 -0.19941925
+</code></pre>
+
+<pre><code class="r">coef(summary(m1))[, &quot;Std. Error&quot;]
+</code></pre>
+
+<pre><code>## (Intercept)         cyl        disp          hp        drat          wt 
+## 18.71788443  1.04502336  0.01785750  0.02176858  1.63537307  1.89441430 
+##        qsec          vs          am        gear        carb 
+##  0.73084480  2.10450861  2.05665055  1.49325996  0.82875250
+</code></pre>
+
+<pre><code class="r">arm::display(m1)
+</code></pre>
+
+<pre><code>## lm(formula = mpg ~ ., data = mtcars)
+##             coef.est coef.se
+## (Intercept) 12.30    18.72  
+## cyl         -0.11     1.05  
+## disp         0.01     0.02  
+## hp          -0.02     0.02  
+## drat         0.79     1.64  
+## wt          -3.72     1.89  
+## qsec         0.82     0.73  
+## vs           0.32     2.10  
+## am           2.52     2.06  
+## gear         0.66     1.49  
+## carb        -0.20     0.83  
+## ---
+## n = 32, k = 11
+## residual sd = 2.65, R-Squared = 0.87
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-37" style="background:;">
+  <hgroup>
+    <h2>Hold figures</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1><code>fig.show = &quot;hold&quot;</code></h1>
+
+<pre><code class="r">x &lt;- seq(-4, 4, 0.1)
+plot(x, dnorm(x, 0, 1), type = &quot;l&quot;, main = expression(sigma == 1))
+plot(x, dnorm(x, 0, 3), type = &quot;l&quot;, main = expression(sigma == 3))
+</code></pre>
+
+<p><img src="assets/fig/figShowHold-1.png" alt="plot of chunk figShowHold"><img src="assets/fig/figShowHold-2.png" alt="plot of chunk figShowHold"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>Inline code</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>A single back tick followed by <code>r</code> prooduces inline code to be evaluated.</p>
+
+<div align = "center">
+<img src = ../assets/img/inlineCode.png width = 1000 height = 80>
+</div>
+
+<p><br></p>
+
+<p>This is an example of inline code, where I want to refer to the sum of <code>a</code> and
+  <code>b</code>, which is 8.</p>
+
+<p>This is <em>extremely</em> useful in writing reports. Never have to update any numbers in text, regardless of changes to your models or data (if you are careful about it).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>Citations (quickly)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>To include references in your paper, you must:</p>
+
+<ul>
+<li>Create an external .bib file using LaTeX formatting (we&#39;ll get to this)</li>
+<li>Include <code>bibliography: nameOfYourBibFile.bib</code> in your YAML front matter.</li>
+<li>Refer to the citations in text using <code>@</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>Creating a .bib doc</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p><img src="../assets/img/googleScholarSearch.png" alt="googleScholarSearch"></p>
+
+<ul class = "build incremental">
+<li><img src="../assets/img/googleCite.png" alt="googleCite"></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul class = "build incremental">
+<li><img src="../assets/img/googleBibTex.png" alt="googleBibTex"></li>
+<li><img src="../assets/img/bibEntry.png" alt="bibEntry"></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>In text citations</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="left">Citation Style</th>
+<th align="left">Output</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">@Briggs11</td>
+<td align="left">Briggs and Weeks (2011)</td>
+</tr>
+<tr>
+<td align="left">[see @Baldwin2014; @Caruso2000]</td>
+<td align="left">(see Baldwin et al. 2014; Caruso 2000)</td>
+</tr>
+<tr>
+<td align="left">[@Linn02, p. 9]</td>
+<td align="left">(Linn and Haug 2002, 9)</td>
+</tr>
+<tr>
+<td align="left">[-@Goldhaber08]</td>
+<td align="left">(2008)</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<p>Note this is not APA. However, references are included automatically at the end of the document. Include <code># References</code> as the last line of your document to give it a title.</p>
+
+<div style='float:left;width:48%;'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-42" style="background:;">
+  <hgroup>
+    <h2>References</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="../assets/img/references.png" alt="references"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    <h2>Rendering the document</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>Through a text editor (e.g., SublimeText)</p>
+
+<pre><code class="r">install.packages(&quot;rmarkdown&quot;)
+library(rmarkdown)
+setwd(&quot;dir/to/Rmd/doc&quot;)
+render(&quot;ExampleRMarkdown.Rmd&quot;, 
+  &quot;html_document&quot;)
+</code></pre>
+
+<p>Note that the document type need not be specified if <code>output:</code> is supplied in 
+  the YAML front matter. </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Through RStudio</p>
+
+<p><img src="../assets/img/knitRStudio.png" alt="knitRStudio"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-44" style="background:;">
+  <hgroup>
+    <h2>Final Product!</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "right">
+<img src = ../assets/img/rMarkdownCode.png width = 500 height = 600>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "left">
+<img src = ../assets/img/fullRMarkdownDoc.png width = 500 height = 600>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-45" style="background:;">
+  <hgroup>
+    <h2>A few complications</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>If you use <em>RStudio</em>, you should be able to render HTML output automatically
+with the <code>knit2html</code> button.</p>
+
+<p>However, if you use a text editor (like I do), then you&#39;ll need to also install
+<em>pandoc</em> (<a href="http://pandoc.org">http://pandoc.org</a>).</p>
+
+<p><img src="../assets/img/pandoc.png" alt="pandoc"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-46" style="background:;">
+  <hgroup>
+    <h2>PDF output</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Regardless of whether you use RStudio or not, you will also need to install a TeX distribution.</p>
+
+<div style='float:left;width:48%;'>
+  <ul>
+<li>Macs: MacTeX (<a href="http://tug.org/mactex/">http://tug.org/mactex/</a>)
+<img src="../assets/img/macTeX.png" alt="macTeX"></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li>Windows: MikTeX (<a href="http://miktex.org">http://miktex.org</a>)
+<img src="../assets/img/mikTeX.png" alt="mikTeX"></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-47" style="background:;">
+  <hgroup>
+    <h2>Summarizing</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>R Markdown is relatively simple and easy to learn. </li>
+<li>Tables are probably the most difficult piece.</li>
+<li>Lots of options to get it to do what you want.</li>
+<li>Great for sharing and documenting your work.</li>
+</ul>
+
+<p><strong>but...</strong></p>
+
+<ul>
+<li>The more you ask from it, the more difficult it will become.</li>
+<li>At a certain point, you may need more flexibility.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-48" style="background:;">
+  <hgroup>
+    <h2>Writing a paper in apa style</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Stick with R Markdown and try the <em>papaja</em> package (<a href="https://github.com/crsh/papaja">https://github.com/crsh/papaja</a>)
+
+<ul>
+<li>I have little to no experience with it</li>
+</ul></li>
+</ul>
+
+<pre><code class="r">install.packages(&quot;devtools&quot;)
+library(devtools)
+install_github(&quot;crsh/papaja&quot;)
+</code></pre>
+
+<ul>
+<li>Go with the more advanced <em>.RNW</em> format (versus <em>.Rmd</em>)
+
+<ul>
+<li>Essentially you build your paper with LaTeX, embedding code through the
+<em>knitr</em> package</li>
+</ul></li>
+</ul>
+
+<div style='float:left;width:48%;'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-49" style="background:;">
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div align = "right">
+<img src = ../assets/img/rnwCode.png width = 500 height = 600>
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "left">
+<img src = ../assets/img/rnwPaper.png width = 500 height = 600>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-50" style="background:;">
+  <hgroup>
+    <h2>Final remarks on R Markdown</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Make sure to look at the documentation</p>
+
+<ul>
+<li><a href="http://RMarkdown.rstudio.com">http://RMarkdown.rstudio.com</a></li>
+<li><a href="http://RMarkdown.rstudio.com/authoring_basics.html">http://RMarkdown.rstudio.com/authoring_basics.html</a></li>
+<li><a href="http://RMarkdown.rstudio.com/authoring_rcodechunks.html">http://RMarkdown.rstudio.com/authoring_rcodechunks.html</a></li>
+</ul></li>
+<li><p>The more you ask from it, the more complicated it becomes.</p></li>
+<li><p>Challenges</p>
+
+<ul>
+<li>Word is the industry standard (frustratingly so, to me) 
+
+<ul>
+<li>Word output is less than ideal</li>
+</ul></li>
+<li>Can be difficult when collaborating with others</li>
+<li>Some journal articles <em>require</em> papers submitted in Word
+
+<ul>
+<li>Potentially get a pdf to word converter, but still less than ideal</li>
+</ul></li>
+<li>Advanced features have a relatively steep learning curve</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-51" style="background:;">
+  <hgroup>
+    <h2>Take home message</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>It&#39;s a fairly big challenge to start to write <em>papers</em> using this method</li>
+<li>Fairly straightforward as a method to produce reports/keep track of your
+analysis</li>
+<li>Start small and work your way up; don&#39;t get discouraged too easily</li>
+</ul>
+
+<p>I&#39;m still actively learning this whole process. I recommend Yihui&#39;s book, it&#39;s quite good.</p>
+
+<p><br></p>
+
+<h1>Let&#39;s practice!</h1>
+
+<p>(if we have time)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='What is R Markdown'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Why produce dynamic documents?'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Reproducible research'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='A couple caveats'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='What is reproducible research?'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Why should we care?'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Are journal articles research?'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Tangential benefits'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='What does the process actually look like?'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Other reasons dynamic documents are useful'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='On to the mechanics'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='YAML Front Matter'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Headings and Lists'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Code chunks'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='A few select chunk options'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='(and a few more)'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='echo and eval'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='warning'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Show errors'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Message'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='tidy'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='cache and dependencies'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='cache'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Declaring dependencies manually'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='NA'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Setting global options'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='NA'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='include'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='tables (very briefly)'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='knitr::kable'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='pander'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='xtable'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='NA'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Other options for results: <code>hold</code>'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Same chunk, no hold'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Hold figures'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Inline code'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Citations (quickly)'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Creating a .bib doc'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='In text citations'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='References'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Rendering the document'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Final Product!'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='A few complications'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='PDF output'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Summarizing'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Writing a paper in apa style'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='NA'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='Final remarks on R Markdown'>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='Take home message'>
+         51
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -1,4 +1,0 @@
-ex_rCalc1	exp
-ex_rCalc2	a	b	exp
-ex_plotExample	data	hp	mpg	mtcars	plot	with
-kable	~	c	data	data.frame	iris	kable	lm	mtcars	pander	rep	rnorm
