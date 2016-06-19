@@ -1,0 +1,13 @@
+base
+slidify
+readstata13
+MASS
+foreign
+Matrix
+lme4
+arm
+beanplot
+visreg
+car
+haven
+lattice

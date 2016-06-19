@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Common/Routine Functions</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Common/Routine Functions">
+  <meta name="author" content="Daniel Anderson">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/zenburn.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Common/Routine Functions</h1>
+    <h2></h2>
+    <p>Daniel Anderson<br/>R Training: Florida State University, June 21-22, 2016</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+em {
+  font-style: italic
+}
+</style>
+
+<style>
+strong {
+  font-weight: bold;
+}
+</style>
+
+<h1>Resources</h1>
+
+<p>Plenty of helpful sheets for common/routine functions in R. For example: </p>
+
+<ul>
+<li><a href="https://cran.r-project.org/doc/contrib/Short-refcard.pdf">https://cran.r-project.org/doc/contrib/Short-refcard.pdf</a></li>
+<li><a href="http://www.columbia.edu/%7Ecjd11/charles_dimaggio/DIRE/resources/R/rFunctionsList.pdf">http://www.columbia.edu/~cjd11/charles_dimaggio/DIRE/resources/R/rFunctionsList.pdf</a></li>
+</ul>
+
+<p><img src="./assets/img/refCard.png" alt="image"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Big picture</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>There are lots of functions that you will use and need as you get deeper into 
+  programming with R. Gaining fluency with these functions is one of the keys to taking the &quot;next step&quot; with R and truly being comfortable with it. Some examples of functions I use routinely include the following:</p>
+
+<ul>
+<li><code>rep()</code> repeats an element or vector a specified number of times</li>
+<li><code>seq()</code> creates a sequence of numbers from <code>x</code> to <code>y</code></li>
+<li><code>:</code> creates an integer index that changes by 1</li>
+<li><code>table()</code> creates a summary of the number of times an element occurs in a
+vector (similar to Frequencies in SPSS)</li>
+<li><code>c()</code> creates a vector</li>
+<li><code>merge()</code> merges two data frames together <code>by</code> a common identifier. Can
+handle left, right, inner, or full joins.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Common functions (continued)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>split()</code> breaks a dataset or a vector into a list, separated by a
+categorical variable</li>
+<li><code>rbind()</code> row binds two or more matrices or data frames together. Note that
+the matrices/data frames must have the equivalent number of columns, and must
+have the same column names (which for matrices could be something like 
+<code>[,1]</code>)</li>
+<li><code>cbind()</code> column binds two or more matrices or data frames together (no
+common identifier necessary)</li>
+<li><code>ifelse()</code> vectorized operator for conditional recoding of a vector. Takes
+three arguments: If condition == TRUE, then carry out an operation, else carry out a different operation.</li>
+<li><code>rnorm()</code>, <code>rbinom()</code>, <code>rpois()</code>, etc., create randomly generated data from 
+the specified distribution (with the specified distributional properties).</li>
+<li><code>dnorm()</code>, <code>dbinom()</code>, <code>dpois()</code>, etc, calculate the likelihood of specific
+data occurring from the specified distribution (with the specified distributional properties).</li>
+<li><code>str()</code> provides the basic structure of the object (most useful for lists and
+data frames).</li>
+<li><code>head()</code> and <code>tail()</code> display the first 6 (head) and the last 6 (tail) rows
+of a given data frame.</li>
+<li><code>summary()</code> provides statistical summary information on vectors</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Common functions (continued)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>sample()</code> randomly select <code>n</code> observations from a vector</li>
+<li><code>order()</code> organizing a vector in ascending or descending order (ascending by
+default)</li>
+<li><code>rev()</code> reverses the elements of a vector</li>
+<li><code>nrow()</code> calculates the number of rows in a matrix/data frame</li>
+<li><code>ncol()</code> calculates the number of columns in a matrix/data frame</li>
+<li><code>which()</code> logical evaluation; returns  elements in a vector that meet the
+specified condition</li>
+<li><code>which.min()</code>, <code>which.max()</code> returns the index of minimum or maximum,
+respectively, from a vector</li>
+<li><code>cut()</code> divides a continuous vector <em>x</em> into intervals at the specified
+breaks</li>
+<li><code>na.omit()</code> removes all missing values from a vector, matrix, or data frame</li>
+<li><code>unique()</code> select unique elements within a vector</li>
+<li><code>paste()</code> and <code>paste0()</code> concatenates string elements (<code>paste0</code> has no
+separator, <code>paste</code> defaults to a space)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Common functions (continued)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>is.na()</code>, <code>is.null()</code></li>
+<li><code>length()</code></li>
+<li>many others...</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>rep</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">rep(&quot;a&quot;, 5)
+</code></pre>
+
+<pre><code>## [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot;
+</code></pre>
+
+<pre><code class="r">rep(c(3,5), 7) 
+</code></pre>
+
+<pre><code>##  [1] 3 5 3 5 3 5 3 5 3 5 3 5 3 5
+</code></pre>
+
+<pre><code class="r">rep(c(3, 5), each = 2, length.out = 7) 
+</code></pre>
+
+<pre><code>## [1] 3 3 5 5 3 3 5
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>seq</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">seq(from = 3, to = 12, by = 4)
+</code></pre>
+
+<pre><code>## [1]  3  7 11
+</code></pre>
+
+<pre><code class="r">seq(from = 3, to = 12, by = 0.1)
+</code></pre>
+
+<pre><code>##  [1]  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9  4.0  4.1  4.2  4.3
+## [15]  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4  5.5  5.6  5.7
+## [29]  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5  6.6  6.7  6.8  6.9  7.0  7.1
+## [43]  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9  8.0  8.1  8.2  8.3  8.4  8.5
+## [57]  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3  9.4  9.5  9.6  9.7  9.8  9.9
+## [71] 10.0 10.1 10.2 10.3 10.4 10.5 10.6 10.7 10.8 10.9 11.0 11.1 11.2 11.3
+## [85] 11.4 11.5 11.6 11.7 11.8 11.9 12.0
+</code></pre>
+
+<pre><code class="r">seq(from = 3, to = 12, length.out = 5)
+</code></pre>
+
+<pre><code>## [1]  3.00  5.25  7.50  9.75 12.00
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>:</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">3:7
+</code></pre>
+
+<pre><code>## [1] 3 4 5 6 7
+</code></pre>
+
+<pre><code class="r">-4:-8
+</code></pre>
+
+<pre><code>## [1] -4 -5 -6 -7 -8
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>table</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">data(mtcars)
+table(mtcars$cyl)
+</code></pre>
+
+<pre><code>## 
+##  4  6  8 
+## 11  7 14
+</code></pre>
+
+<pre><code class="r">table(mtcars$cyl, mtcars$carb) # rows, columns
+</code></pre>
+
+<pre><code>##    
+##     1 2 3 4 6 8
+##   4 5 6 0 0 0 0
+##   6 2 0 0 4 1 0
+##   8 0 4 3 6 0 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">table(mtcars$cyl, mtcars$carb, mtcars$vs) # rows, columns
+</code></pre>
+
+<pre><code>## , ,  = 0
+## 
+##    
+##     1 2 3 4 6 8
+##   4 0 1 0 0 0 0
+##   6 0 0 0 2 1 0
+##   8 0 4 3 6 0 1
+## 
+## , ,  = 1
+## 
+##    
+##     1 2 3 4 6 8
+##   4 5 5 0 0 0 0
+##   6 2 0 0 2 0 0
+##   8 0 0 0 0 0 0
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>merge</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mpgByCarb &lt;- aggregate(mpg ~ carb, data = mtcars, FUN = mean )
+mpgByCarb
+</code></pre>
+
+<pre><code>##   carb      mpg
+## 1    1 25.34286
+## 2    2 22.40000
+## 3    3 16.30000
+## 4    4 15.79000
+## 5    6 19.70000
+## 6    8 15.00000
+</code></pre>
+
+<pre><code class="r">names(mpgByCarb)[2] &lt;- &quot;carbMeanMPG&quot;
+mtcars &lt;- merge(mtcars, mpgByCarb, by = &quot;carb&quot;)
+head(mtcars)
+</code></pre>
+
+<pre><code>##   carb  mpg cyl  disp  hp drat    wt  qsec vs am gear carbMeanMPG
+## 1    1 18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    25.34286
+## 2    1 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    25.34286
+## 3    1 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    25.34286
+## 4    1 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    25.34286
+## 5    1 22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    25.34286
+## 6    1 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    25.34286
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Additional arguments</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>X</code> dataset = first dataset listed; <code>Y</code> dataset = second dataset listed</p>
+
+<p>Keep all cases in the X dataset, drop cases in the Y dataset that don&#39;t match the X dataset</p>
+
+<pre><code class="r">merge(..., all.x = TRUE)
+</code></pre>
+
+<p>Keep all cases in the Y dataset, drop cases in the X dataset that don&#39;t match the Y dataset</p>
+
+<pre><code class="r">merge(..., all.y = TRUE)
+</code></pre>
+
+<p>Keep only cases that match in both files (inner join; default)</p>
+
+<pre><code class="r">merge(...)
+</code></pre>
+
+<p>Keep all cases in both datasets (full join or outer join)</p>
+
+<pre><code class="r">merge(..., all = TRUE)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>split</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">str(split(mtcars, mtcars$carb))
+</code></pre>
+
+<pre><code>## List of 6
+##  $ 1:&#39;data.frame&#39;:   7 obs. of  12 variables:
+##   ..$ carb       : num [1:7] 1 1 1 1 1 1 1
+##   ..$ mpg        : num [1:7] 18.1 21.4 21.5 32.4 22.8 33.9 27.3
+##   ..$ cyl        : num [1:7] 6 6 4 4 4 4 4
+##   ..$ disp       : num [1:7] 225 258 120.1 78.7 108 ...
+##   ..$ hp         : num [1:7] 105 110 97 66 93 65 66
+##   ..$ drat       : num [1:7] 2.76 3.08 3.7 4.08 3.85 4.22 4.08
+##   ..$ wt         : num [1:7] 3.46 3.21 2.46 2.2 2.32 ...
+##   ..$ qsec       : num [1:7] 20.2 19.4 20 19.5 18.6 ...
+##   ..$ vs         : num [1:7] 1 1 1 1 1 1 1
+##   ..$ am         : num [1:7] 0 0 0 1 1 1 1
+##   ..$ gear       : num [1:7] 3 3 3 4 4 4 4
+##   ..$ carbMeanMPG: num [1:7] 25.3 25.3 25.3 25.3 25.3 ...
+##  $ 2:&#39;data.frame&#39;:   10 obs. of  12 variables:
+##   ..$ carb       : num [1:10] 2 2 2 2 2 2 2 2 2 2
+##   ..$ mpg        : num [1:10] 18.7 30.4 24.4 22.8 15.5 15.2 30.4 19.2 26 21.4
+##   ..$ cyl        : num [1:10] 8 4 4 4 8 8 4 8 4 4
+##   ..$ disp       : num [1:10] 360 75.7 146.7 140.8 318 ...
+##   ..$ hp         : num [1:10] 175 52 62 95 150 150 113 175 91 109
+##   ..$ drat       : num [1:10] 3.15 4.93 3.69 3.92 2.76 3.15 3.77 3.08 4.43 4.11
+##   ..$ wt         : num [1:10] 3.44 1.61 3.19 3.15 3.52 ...
+##   ..$ qsec       : num [1:10] 17 18.5 20 22.9 16.9 ...
+##   ..$ vs         : num [1:10] 0 1 1 1 0 0 1 0 0 1
+##   ..$ am         : num [1:10] 0 1 0 0 0 0 1 0 1 1
+##   ..$ gear       : num [1:10] 3 4 4 4 3 3 5 3 5 4
+##   ..$ carbMeanMPG: num [1:10] 22.4 22.4 22.4 22.4 22.4 22.4 22.4 22.4 22.4 22.4
+##  $ 3:&#39;data.frame&#39;:   3 obs. of  12 variables:
+##   ..$ carb       : num [1:3] 3 3 3
+##   ..$ mpg        : num [1:3] 15.2 17.3 16.4
+##   ..$ cyl        : num [1:3] 8 8 8
+##   ..$ disp       : num [1:3] 276 276 276
+##   ..$ hp         : num [1:3] 180 180 180
+##   ..$ drat       : num [1:3] 3.07 3.07 3.07
+##   ..$ wt         : num [1:3] 3.78 3.73 4.07
+##   ..$ qsec       : num [1:3] 18 17.6 17.4
+##   ..$ vs         : num [1:3] 0 0 0
+##   ..$ am         : num [1:3] 0 0 0
+##   ..$ gear       : num [1:3] 3 3 3
+##   ..$ carbMeanMPG: num [1:3] 16.3 16.3 16.3
+##  $ 4:&#39;data.frame&#39;:   10 obs. of  12 variables:
+##   ..$ carb       : num [1:10] 4 4 4 4 4 4 4 4 4 4
+##   ..$ mpg        : num [1:10] 21 21 14.3 10.4 14.7 19.2 17.8 13.3 15.8 10.4
+##   ..$ cyl        : num [1:10] 6 6 8 8 8 6 6 8 8 8
+##   ..$ disp       : num [1:10] 160 160 360 460 440 ...
+##   ..$ hp         : num [1:10] 110 110 245 215 230 123 123 245 264 205
+##   ..$ drat       : num [1:10] 3.9 3.9 3.21 3 3.23 3.92 3.92 3.73 4.22 2.93
+##   ..$ wt         : num [1:10] 2.62 2.88 3.57 5.42 5.34 ...
+##   ..$ qsec       : num [1:10] 16.5 17 15.8 17.8 17.4 ...
+##   ..$ vs         : num [1:10] 0 0 0 0 0 1 1 0 0 0
+##   ..$ am         : num [1:10] 1 1 0 0 0 0 0 0 1 0
+##   ..$ gear       : num [1:10] 4 4 3 3 3 4 4 3 5 3
+##   ..$ carbMeanMPG: num [1:10] 15.8 15.8 15.8 15.8 15.8 ...
+##  $ 6:&#39;data.frame&#39;:   1 obs. of  12 variables:
+##   ..$ carb       : num 6
+##   ..$ mpg        : num 19.7
+##   ..$ cyl        : num 6
+##   ..$ disp       : num 145
+##   ..$ hp         : num 175
+##   ..$ drat       : num 3.62
+##   ..$ wt         : num 2.77
+##   ..$ qsec       : num 15.5
+##   ..$ vs         : num 0
+##   ..$ am         : num 1
+##   ..$ gear       : num 5
+##   ..$ carbMeanMPG: num 19.7
+##  $ 8:&#39;data.frame&#39;:   1 obs. of  12 variables:
+##   ..$ carb       : num 8
+##   ..$ mpg        : num 15
+##   ..$ cyl        : num 8
+##   ..$ disp       : num 301
+##   ..$ hp         : num 335
+##   ..$ drat       : num 3.54
+##   ..$ wt         : num 3.57
+##   ..$ qsec       : num 14.6
+##   ..$ vs         : num 0
+##   ..$ am         : num 1
+##   ..$ gear       : num 5
+##   ..$ carbMeanMPG: num 15
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>rbind</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">spltD &lt;- split(mtcars, mtcars$carb)
+carbs13 &lt;- rbind(spltD[[1]], spltD[[2]], spltD[[3]])
+nrow(mtcars); nrow(carbs13)
+</code></pre>
+
+<pre><code>## [1] 32
+</code></pre>
+
+<pre><code>## [1] 20
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>cbind</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mpgToHP &lt;- mtcars$mpg / mtcars$hp
+cbind(mtcars, mpgToHP)
+</code></pre>
+
+<pre><code>##    carb  mpg cyl  disp  hp drat    wt  qsec vs am gear carbMeanMPG
+## 1     1 18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    25.34286
+## 2     1 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    25.34286
+## 3     1 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    25.34286
+## 4     1 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    25.34286
+## 5     1 22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    25.34286
+## 6     1 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    25.34286
+## 7     1 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    25.34286
+## 8     2 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    22.40000
+## 9     2 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    22.40000
+## 10    2 24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    22.40000
+## 11    2 22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    22.40000
+## 12    2 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    22.40000
+## 13    2 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    22.40000
+## 14    2 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    22.40000
+## 15    2 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    22.40000
+## 16    2 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    22.40000
+## 17    2 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    22.40000
+## 18    3 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    16.30000
+## 19    3 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    16.30000
+## 20    3 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    16.30000
+## 21    4 21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    15.79000
+## 22    4 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    15.79000
+## 23    4 14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    15.79000
+## 24    4 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    15.79000
+## 25    4 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    15.79000
+## 26    4 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    15.79000
+## 27    4 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    15.79000
+## 28    4 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    15.79000
+## 29    4 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    15.79000
+## 30    4 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    15.79000
+## 31    6 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    19.70000
+## 32    8 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    15.00000
+##       mpgToHP
+## 1  0.17238095
+## 2  0.19454545
+## 3  0.22164948
+## 4  0.49090909
+## 5  0.24516129
+## 6  0.52153846
+## 7  0.41363636
+## 8  0.10685714
+## 9  0.58461538
+## 10 0.39354839
+## 11 0.24000000
+## 12 0.10333333
+## 13 0.10133333
+## 14 0.26902655
+## 15 0.10971429
+## 16 0.28571429
+## 17 0.19633028
+## 18 0.08444444
+## 19 0.09611111
+## 20 0.09111111
+## 21 0.19090909
+## 22 0.19090909
+## 23 0.05836735
+## 24 0.04837209
+## 25 0.06391304
+## 26 0.15609756
+## 27 0.14471545
+## 28 0.05428571
+## 29 0.05984848
+## 30 0.05073171
+## 31 0.11257143
+## 32 0.04477612
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>ifelse</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>If a condition is <code>TRUE</code>, carry out an operation, ELSE do something else</p>
+
+<pre><code class="r">with(mtcars, ifelse(mpg &gt; mean(mpg), &quot;High&quot;, &quot;Low&quot;))
+</code></pre>
+
+<pre><code>##  [1] &quot;Low&quot;  &quot;High&quot; &quot;High&quot; &quot;High&quot; &quot;High&quot; &quot;High&quot; &quot;High&quot; &quot;Low&quot;  &quot;High&quot; &quot;High&quot;
+## [11] &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;High&quot; &quot;Low&quot;  &quot;High&quot; &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [21] &quot;High&quot; &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [31] &quot;Low&quot;  &quot;Low&quot;
+</code></pre>
+
+<pre><code class="r"># More complicated
+with(mtcars, ifelse(mpg &gt; mean(mpg) + sd(mpg), &quot;High&quot;, ifelse(
+                    mpg &gt; mean(mpg) - sd(mpg), &quot;Low&quot;, &quot;Averge&quot;)))
+</code></pre>
+
+<pre><code>##  [1] &quot;Low&quot;    &quot;Low&quot;    &quot;Low&quot;    &quot;High&quot;   &quot;Low&quot;    &quot;High&quot;   &quot;High&quot;  
+##  [8] &quot;Low&quot;    &quot;High&quot;   &quot;Low&quot;    &quot;Low&quot;    &quot;Low&quot;    &quot;Low&quot;    &quot;High&quot;  
+## [15] &quot;Low&quot;    &quot;Low&quot;    &quot;Low&quot;    &quot;Low&quot;    &quot;Low&quot;    &quot;Low&quot;    &quot;Low&quot;   
+## [22] &quot;Low&quot;    &quot;Low&quot;    &quot;Averge&quot; &quot;Low&quot;    &quot;Low&quot;    &quot;Low&quot;    &quot;Averge&quot;
+## [29] &quot;Low&quot;    &quot;Averge&quot; &quot;Low&quot;    &quot;Low&quot;
+</code></pre>
+
+<hr>
+
+<h2>rnorm etc</h2>
+
+<p>Randomly draw observations from a specified distribution</p>
+
+<pre><code class="r">rnorm(5, 10, 1)
+</code></pre>
+
+<pre><code>## [1]  7.972124  9.221144 10.077654 10.745705 10.133249
+</code></pre>
+
+<pre><code class="r">rnorm(3, 10, 1)
+</code></pre>
+
+<pre><code>## [1]  9.739709 10.353552  9.412429
+</code></pre>
+
+<pre><code class="r">rnorm(3, 100, 1)
+</code></pre>
+
+<pre><code>## [1] 101.40454  99.93386  99.94054
+</code></pre>
+
+<pre><code class="r">rnorm(3, 100, 100)
+</code></pre>
+
+<pre><code>## [1] 140.33071  96.57554  58.73868
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>dnorm() etc. arguments</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Likelihood of the data, given the specified mean and standard deviation of a normal distribution</p>
+
+<pre><code class="r">with(mtcars, {
+    dnorm(mpg, mean(mpg), sd(mpg))
+})
+</code></pre>
+
+<pre><code>##  [1] 0.062679291 0.064649248 0.064407760 0.008222701 0.059831444
+##  [6] 0.004795189 0.032367044 0.064454322 0.015326622 0.051262053
+## [11] 0.059831444 0.049525880 0.047624276 0.015326622 0.065474283
+## [16] 0.040931241 0.064649248 0.047624276 0.059464537 0.054876618
+## [21] 0.065443873 0.065443873 0.041721572 0.018172923 0.044370823
+## [26] 0.065474283 0.061580898 0.035087251 0.051375961 0.018172923
+## [31] 0.066054200 0.046333457
+</code></pre>
+
+<p>Note the use of <code>with()</code></p>
+
+<div style='float:left;width:48%;'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <article data-timings="">
+    <p>These functions can be used in ML estimation but are also commonly useful in plotting.</p>
+
+<div style='float:left;width:48%;'>
+  <pre><code class="r">plot(x = 101:200,  
+    y = seq(0, 0.1, length.out = 100), 
+    type = &quot;n&quot;, 
+    ylab = &quot;Density&quot;, main = &quot;Normals&quot;)
+abline(v = 150, lty = 3, lwd = 3, 
+    col = &quot;gray&quot;)
+
+lines(101:200, dnorm(101:200, 150, 5), 
+    col = &quot;blue&quot;)
+lines(101:200, dnorm(101:200, 150, 10), 
+    col = &quot;red&quot;)
+lines(101:200, dnorm(101:200, 150, 15), 
+    col = &quot;green&quot;)
+lines(101:200, dnorm(101:200, 150, 20), 
+    col = &quot;purple&quot;)
+lines(101:200, dnorm(101:200, 150, 25), 
+    col = &quot;orange&quot;)
+lines(101:200, dnorm(101:200, 150, 30), 
+    col = &quot;black&quot;)
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>sample</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Randomly sample elements from a vector</p>
+
+<pre><code class="r">sample(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), 2)
+</code></pre>
+
+<pre><code>## [1] &quot;C&quot; &quot;A&quot;
+</code></pre>
+
+<pre><code class="r">sample(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), 2)
+</code></pre>
+
+<pre><code>## [1] &quot;B&quot; &quot;A&quot;
+</code></pre>
+
+<pre><code class="r">sample(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), 2)
+</code></pre>
+
+<pre><code>## [1] &quot;A&quot; &quot;C&quot;
+</code></pre>
+
+<pre><code class="r">sample(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), 8, replace = TRUE)
+</code></pre>
+
+<pre><code>## [1] &quot;C&quot; &quot;A&quot; &quot;A&quot; &quot;C&quot; &quot;A&quot; &quot;C&quot; &quot;C&quot; &quot;A&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <article data-timings="">
+    <p>Randomly select 10 rows</p>
+
+<pre><code class="r">mtcars[sample(rownames(mtcars), 10), ]
+</code></pre>
+
+<pre><code>##    carb  mpg cyl  disp  hp drat    wt  qsec vs am gear carbMeanMPG
+## 3     1 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    25.34286
+## 8     2 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    22.40000
+## 9     2 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    22.40000
+## 4     1 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    25.34286
+## 23    4 14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    15.79000
+## 5     1 22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    25.34286
+## 29    4 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    15.79000
+## 10    2 24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    22.40000
+## 30    4 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    15.79000
+## 2     1 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    25.34286
+</code></pre>
+
+<p>Randomly select 10% of all rows</p>
+
+<pre><code class="r">mtcars[sample(c(TRUE, FALSE), prob = c(.1, .9)), ]
+</code></pre>
+
+<pre><code>##    carb  mpg cyl  disp  hp drat    wt  qsec vs am gear carbMeanMPG
+## 2     1 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    25.34286
+## 4     1 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    25.34286
+## 6     1 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    25.34286
+## 8     2 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    22.40000
+## 10    2 24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    22.40000
+## 12    2 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    22.40000
+## 14    2 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    22.40000
+## 16    2 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    22.40000
+## 18    3 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    16.30000
+## 20    3 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    16.30000
+## 22    4 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    15.79000
+## 24    4 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    15.79000
+## 26    4 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    15.79000
+## 28    4 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    15.79000
+## 30    4 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    15.79000
+## 32    8 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    15.00000
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>order</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Order cases by <em>mpg</em> (ascending order)</p>
+
+<pre><code class="r">mtcars[order(mtcars$mpg), ]
+</code></pre>
+
+<pre><code>##    carb  mpg cyl  disp  hp drat    wt  qsec vs am gear carbMeanMPG
+## 24    4 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    15.79000
+## 30    4 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    15.79000
+## 28    4 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    15.79000
+## 23    4 14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    15.79000
+## 25    4 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    15.79000
+## 32    8 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    15.00000
+## 13    2 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    22.40000
+## 18    3 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    16.30000
+## 12    2 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    22.40000
+## 29    4 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    15.79000
+## 20    3 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    16.30000
+## 19    3 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    16.30000
+## 27    4 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    15.79000
+## 1     1 18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    25.34286
+## 8     2 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    22.40000
+## 15    2 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    22.40000
+## 26    4 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    15.79000
+## 31    6 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    19.70000
+## 21    4 21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    15.79000
+## 22    4 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    15.79000
+## 2     1 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    25.34286
+## 17    2 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    22.40000
+## 3     1 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    25.34286
+## 5     1 22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    25.34286
+## 11    2 22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    22.40000
+## 10    2 24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    22.40000
+## 16    2 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    22.40000
+## 7     1 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    25.34286
+## 9     2 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    22.40000
+## 14    2 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    22.40000
+## 4     1 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    25.34286
+## 6     1 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    25.34286
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <article data-timings="">
+    <p>Descending order</p>
+
+<pre><code class="r">mtcars[order(mtcars$mpg, decreasing = TRUE), ]
+</code></pre>
+
+<pre><code>##    carb  mpg cyl  disp  hp drat    wt  qsec vs am gear carbMeanMPG
+## 6     1 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    25.34286
+## 4     1 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    25.34286
+## 9     2 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    22.40000
+## 14    2 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    22.40000
+## 7     1 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    25.34286
+## 16    2 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    22.40000
+## 10    2 24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    22.40000
+## 5     1 22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    25.34286
+## 11    2 22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    22.40000
+## 3     1 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    25.34286
+## 2     1 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    25.34286
+## 17    2 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    22.40000
+## 21    4 21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    15.79000
+## 22    4 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    15.79000
+## 31    6 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    19.70000
+## 15    2 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    22.40000
+## 26    4 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    15.79000
+## 8     2 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    22.40000
+## 1     1 18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    25.34286
+## 27    4 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    15.79000
+## 19    3 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    16.30000
+## 20    3 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    16.30000
+## 29    4 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    15.79000
+## 12    2 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    22.40000
+## 13    2 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    22.40000
+## 18    3 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    16.30000
+## 32    8 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    15.00000
+## 25    4 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    15.79000
+## 23    4 14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    15.79000
+## 28    4 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    15.79000
+## 24    4 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    15.79000
+## 30    4 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    15.79000
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>rev</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">rev(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;))
+</code></pre>
+
+<pre><code>## [1] &quot;c&quot; &quot;b&quot; &quot;a&quot;
+</code></pre>
+
+<p>Helpful in producing standard error polygons around regression lines</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>which</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">which(mtcars$mpg &gt; 30)
+</code></pre>
+
+<pre><code>## [1]  4  6  9 14
+</code></pre>
+
+<pre><code class="r">mtcars$mpg[which(mtcars$mpg &gt; 30)]
+</code></pre>
+
+<pre><code>## [1] 32.4 33.9 30.4 30.4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>which.max/which.min</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mtcars$mpg[which.max(mtcars$mpg)]
+</code></pre>
+
+<pre><code>## [1] 33.9
+</code></pre>
+
+<pre><code class="r">mtcars$mpg[which.min(mtcars$mpg)]
+</code></pre>
+
+<pre><code>## [1] 10.4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>cut</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mtcars$catMPG &lt;- cut(mtcars$mpg, seq(0, 40, 10))
+head(mtcars)
+</code></pre>
+
+<pre><code>##   carb  mpg cyl  disp  hp drat    wt  qsec vs am gear carbMeanMPG  catMPG
+## 1    1 18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    25.34286 (10,20]
+## 2    1 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    25.34286 (20,30]
+## 3    1 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    25.34286 (20,30]
+## 4    1 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    25.34286 (30,40]
+## 5    1 22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    25.34286 (20,30]
+## 6    1 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    25.34286 (30,40]
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>unique</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(openintro)
+head(births)
+</code></pre>
+
+<pre><code>##   fAge mAge weeks premature visits gained weight sexBaby     smoke
+## 1   31   30    39 full term     13      1   6.88    male    smoker
+## 2   34   36    39 full term      5     35   7.69    male nonsmoker
+## 3   36   35    40 full term     12     29   8.88    male nonsmoker
+## 4   41   40    40 full term     13     30   9.00  female nonsmoker
+## 5   42   37    40 full term     NA     10   7.94    male nonsmoker
+## 6   37   28    40 full term     12     35   8.25    male    smoker
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <article data-timings="">
+    <p>How many different weeks were women pregnant?</p>
+
+<pre><code class="r">unique(births$weeks)
+</code></pre>
+
+<pre><code>##  [1] 39 40 28 35 32 41 38 36 33 34 37 42 43 44 29 26
+</code></pre>
+
+<pre><code class="r">length(unique(births$weeks))
+</code></pre>
+
+<pre><code>## [1] 16
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>paste</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">paste(&quot;Variable&quot;, 1:5, sep = &quot;_&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;Variable_1&quot; &quot;Variable_2&quot; &quot;Variable_3&quot; &quot;Variable_4&quot; &quot;Variable_5&quot;
+</code></pre>
+
+<pre><code class="r">paste(&quot;Variable&quot;, rep(1:3, each = 2), c(&quot;a&quot;, &quot;b&quot;), sep = &quot;.&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;Variable.1.a&quot; &quot;Variable.1.b&quot; &quot;Variable.2.a&quot; &quot;Variable.2.b&quot;
+## [5] &quot;Variable.3.a&quot; &quot;Variable.3.b&quot;
+</code></pre>
+
+<pre><code class="r">paste0(&quot;Variable&quot;, 1:5)
+</code></pre>
+
+<pre><code>## [1] &quot;Variable1&quot; &quot;Variable2&quot; &quot;Variable3&quot; &quot;Variable4&quot; &quot;Variable5&quot;
+</code></pre>
+
+<pre><code class="r">paste0(&quot;Variable&quot;, rep(1:3, each = 2), c(&quot;a&quot;, &quot;b&quot;))
+</code></pre>
+
+<pre><code>## [1] &quot;Variable1a&quot; &quot;Variable1b&quot; &quot;Variable2a&quot; &quot;Variable2b&quot; &quot;Variable3a&quot;
+## [6] &quot;Variable3b&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>is.na</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(mi)
+data(nlsyV)
+head(nlsyV)
+</code></pre>
+
+<pre><code>##      ppvtr.36 first b.marr income momage momed momrace
+## 535       105     1      1  21446     20     2       3
+## 2932       91     1      1  12125     22     2       3
+## 2906       89     0      1  13560     22     2       1
+## 4510       85     0      1  24500     28     3      NA
+## 3869       66     0      0   3304     20     1      NA
+## 2952       NA     0      0   5832     27     2      NA
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">table(is.na(nlsyV$momrace))
+</code></pre>
+
+<pre><code>## 
+## FALSE  TRUE 
+##   283   117
+</code></pre>
+
+<p>Count number of missing cases for each row</p>
+
+<pre><code class="r">nlsyV$missRowTot &lt;- apply(nlsyV, 1, function(x) sum(is.na(x)))
+head(nlsyV)
+</code></pre>
+
+<pre><code>##      ppvtr.36 first b.marr income momage momed momrace missRowTot
+## 535       105     1      1  21446     20     2       3          0
+## 2932       91     1      1  12125     22     2       3          0
+## 2906       89     0      1  13560     22     2       1          0
+## 4510       85     0      1  24500     28     3      NA          1
+## 3869       66     0      0   3304     20     1      NA          1
+## 2952       NA     0      0   5832     27     2      NA          2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>Your Turn (probably fairly tough)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Use some of the common/routine functions to do the following:</h1>
+
+<ul>
+<li>Create a sequence vector from 100 to 237 that is of length 1000.</li>
+<li>Randomly order the vector</li>
+<li>Compute the likelihood of each point occurring from a normal distribution
+with \(\mu\) = 178.32 and \(\sigma\) = 15.67. Store the result in a new vector.</li>
+<li>Form a 1000 by 2 matrix that is composed of the sequence vector and
+the likelihood vector.</li>
+<li>Use the matrix to plot the relation between the sequence vector and the
+likelihood of each point.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <article data-timings="">
+    <ul>
+<li>Create a sequence vector from 100 to 237 that is of length 10,000.</li>
+</ul>
+
+<pre><code class="r">v &lt;- seq(100, 237, length.out = 1e4)
+head(v)
+</code></pre>
+
+<pre><code>## [1] 100.0000 100.0137 100.0274 100.0411 100.0548 100.0685
+</code></pre>
+
+<ul>
+<li>Randomly order the vector</li>
+</ul>
+
+<pre><code class="r">v &lt;- sample(v, length(v))
+head(v)
+</code></pre>
+
+<pre><code>## [1] 136.0483 117.7022 183.4550 139.0626 207.8709 153.1065
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <article data-timings="">
+    <ul>
+<li>Compute the likelihood of each point, and store the result in a new vector</li>
+</ul>
+
+<pre><code class="r">lik &lt;- dnorm(v, 178.32, 15.67)
+head(lik)
+</code></pre>
+
+<pre><code>## [1] 0.000669311 0.000014333 0.024128056 0.001103967 0.004301224 0.006976735
+</code></pre>
+
+<ul>
+<li>Form a 1000 by 2 matrix that is composed of the sequence vector and
+the likelihood vector.</li>
+</ul>
+
+<pre><code class="r">m &lt;- cbind(v, lik)
+head(m)
+</code></pre>
+
+<pre><code>##             v         lik
+## [1,] 136.0483 0.000669311
+## [2,] 117.7022 0.000014333
+## [3,] 183.4550 0.024128056
+## [4,] 139.0626 0.001103967
+## [5,] 207.8709 0.004301224
+## [6,] 153.1065 0.006976735
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <article data-timings="">
+    <ul>
+<li>Use the matrix to plot the relation between the sequence vector and the
+likelihood of each point.</li>
+</ul>
+
+<pre><code class="r">plot(m[ ,1], m[ ,2])
+</code></pre>
+
+<p><img src="assets/fig/lab5-1.png" alt="plot of chunk lab5"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Big picture'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Common functions (continued)'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Common functions (continued)'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Common functions (continued)'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='rep'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='seq'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title=':'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='table'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='NA'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='merge'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Additional arguments'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='split'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='rbind'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='cbind'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='ifelse'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='dnorm() etc. arguments'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='NA'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='sample'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='NA'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='order'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='NA'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='rev'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='which'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='which.max/which.min'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='cut'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='unique'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='NA'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='paste'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='is.na'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='NA'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Your Turn (probably fairly tough)'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='NA'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='NA'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='NA'>
+         35
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

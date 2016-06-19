@@ -751,7 +751,7 @@ plot(pars)
 (basically because I can't help myself)
 
 ```{r r2WinstepsPlot2}
-plot(pars, type = "ICCs", colors = colorRamps::rgb.tables(25))
+plot(pars, type = "ICCs", colors = colorRamps::rgb.tables(25), lwd = 2)
 ```
 
 ---- .segue

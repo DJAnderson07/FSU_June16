@@ -1,0 +1,2694 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Documents: An Introduction</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Dynamic Documents: An Introduction">
+  <meta name="author" content="Daniel Anderson">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/zenburn.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Dynamic Documents: An Introduction</h1>
+    <h2>Day 1: Morning, Session 2</h2>
+    <p>Daniel Anderson<br/>R Training: Florida State University, June 21, 2016</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+em {
+  font-style: italic
+}
+</style>
+
+<style>
+strong {
+  font-weight: bold;
+}
+</style>
+
+<h2>Directory Management</h2>
+
+<p>What is a working directory?</p>
+
+<ul>
+<li>Exactly what it sounds like--the directory from which R will work</li>
+<li>Read and write files from and to this directory</li>
+</ul>
+
+<p>Identify current working directory</p>
+
+<pre><code class="r">getwd()
+</code></pre>
+
+<pre><code>## [1] &quot;/Users/Daniel/Dropbox/Teaching/FSU_June16&quot;
+</code></pre>
+
+<div style='float:left;width:48%;'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Looking into a working directory</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>What&#39;s in this directory? Two ways to find out:</p>
+
+<ul>
+<li><p>Navigate to the directory and take a look.</p>
+
+<div align = "left">
+<img src = ../assets/img/currentDIR.png width = 500 height = 150>
+</div></li>
+<li><p>Have R look for you</p></li>
+</ul>
+
+<pre><code class="r">list.files()
+</code></pre>
+
+<pre><code>## [1] &quot;agenda&quot;  &quot;data&quot;    &quot;day1&quot;    &quot;day2&quot;    &quot;extras&quot;  &quot;LICENSE&quot;
+</code></pre>
+
+<p>The <code>list.files()</code> function shows what R &quot;sees&quot;.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Navigating your directory quickly</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Change directory from current location to a nested folder</li>
+</ul>
+
+<pre><code class="r">setwd(&quot;./nested/folders&quot;)
+</code></pre>
+
+<p>Here the <code>.</code> is essentially a fill-in for <code>getwd()</code>. </p>
+
+<ul>
+<li>Navigate back one folder</li>
+</ul>
+
+<pre><code class="r">setwd(&quot;..&quot;)
+</code></pre>
+
+<ul>
+<li>Navigate back two folders</li>
+</ul>
+
+<pre><code class="r">setwd(&quot;../..&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Reading Data into R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>To read data into R, you must tell R where the data are located by either 
+  changing the working directory, or by providing the full path. For 
+  example</p>
+
+<pre><code class="r">setwd(&quot;/Users/Daniel/Dropbox/Teaching/CourseR/data/&quot;)
+d &lt;- read.csv(&quot;cars.csv&quot;)
+</code></pre>
+
+<p>is equivalent to</p>
+
+<pre><code class="r">d &lt;- read.csv(&quot;/Users/Daniel/Dropbox/Teaching/CourseR/data/cars.csv&quot;)
+</code></pre>
+
+<p>Also note that the shortcuts for changing directories can be used here too, 
+  which can often increase efficiency.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>My advice</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Set your working directory to where you want to save all your data files.</li>
+<li>Move the data you are working with to that file, or to a nearby folder 
+e.g.,</li>
+</ul>
+
+<pre><code class="r">&quot;(../raw)&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>What data can be read into R?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>R can read multiple data files
+
+<ul>
+<li>text files (csv, tab delimited, pipe delimited, etc)</li>
+<li>web pages</li>
+<li>SPSS, SAS, etc. (via the <em>foreign</em>, <em>haven</em>, or <em>memisc</em> packages)</li>
+<li>Excel (I have not had great success here, and typically just convert it to 
+csv first)</li>
+<li>relational and non-relational databases (I have no experience here, but I 
+know it is possible)</li>
+<li>Directly entered data</li>
+</ul></li>
+<li>Simple text files are typically the most straightforward</li>
+</ul>
+
+<p><span style="color:green; font-weight:bold">
+Fairly good blog post: </span>
+<a href="http://www.r-bloggers.com/importing-data-into-r-from-different-sources/">http://www.r-bloggers.com/importing-data-into-r-from-different-sources/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Diving deeper into reading data with R</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">?read.table
+</code></pre>
+
+<div align = "left">
+<img src = ../assets/img/readTable.png width=900 height=500>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Important Arguments</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li><code>file</code>
+
+<ul>
+<li>name of file, including extension, in quotes</li>
+<li>e.g. <code>&quot;cars.txt&quot;</code></li>
+</ul></li>
+<li><code>header</code> 
+
+<ul>
+<li><code>read.table</code> defaults to <code>FALSE</code></li>
+<li><code>read.csv</code> and others default to <code>TRUE</code></li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li><p><code>sep</code> </p>
+
+<ul>
+<li><code>read.table</code> defaults to <code>&quot;&quot;</code></li>
+<li><code>read.csv</code> defaults to <code>&quot;,&quot;</code></li>
+<li><code>read.delim</code> defaults to tab delimiter <code>&quot;\t&quot;</code></li>
+</ul></li>
+<li><p>Others</p>
+
+<ul>
+<li><code>na.strings</code></li>
+<li><code>skip</code></li>
+<li><code>comment.char</code></li>
+<li><code>stringsAsFactors</code></li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p><img src="../assets/img/carsExcel.png" alt="excel"></p>
+
+<ul>
+<li>Although csv files open in Excel, they are actually just text files</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="../assets/img/carsTxt.png" alt="txt"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">getwd()
+</code></pre>
+
+<pre><code>## [1] &quot;/Users/Daniel/Dropbox/Teaching/FSU_June16&quot;
+</code></pre>
+
+<pre><code class="r">cars &lt;- read.csv(&quot;./data/cars.csv&quot;)
+</code></pre>
+
+<ul>
+<li>Use <code>head()</code> <code>tail()</code> and <code>str()</code> to check that the data were read in properly</li>
+</ul>
+
+<pre><code class="r">head(cars)
+</code></pre>
+
+<pre><code>##               model  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## 1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## 2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## 3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## 4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## 5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## 6           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">tail(cars)
+</code></pre>
+
+<pre><code>##             model  mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## 27  Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## 28   Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+## 29 Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+## 30   Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+## 31  Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+## 32     Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">str(cars)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    32 obs. of  12 variables:
+##  $ model: Factor w/ 32 levels &quot;AMC Javelin&quot;,..: 18 19 5 13 14 31 7 21 20 22 ...
+##  $ mpg  : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl  : int  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp : num  160 160 108 258 360 ...
+##  $ hp   : int  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat : num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt   : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec : num  16.5 17 18.6 19.4 17 ...
+##  $ vs   : int  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am   : int  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear : int  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb : int  4 4 1 1 2 1 4 2 2 4 ...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Learn more with <code>summary()</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">summary(cars)
+</code></pre>
+
+<pre><code>##                 model         mpg             cyl             disp      
+##  AMC Javelin       : 1   Min.   :10.40   Min.   :4.000   Min.   : 71.1  
+##  Cadillac Fleetwood: 1   1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8  
+##  Camaro Z28        : 1   Median :19.20   Median :6.000   Median :196.3  
+##  Chrysler Imperial : 1   Mean   :20.09   Mean   :6.188   Mean   :230.7  
+##  Datsun 710        : 1   3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0  
+##  Dodge Challenger  : 1   Max.   :33.90   Max.   :8.000   Max.   :472.0  
+##  (Other)           :26                                                  
+##        hp             drat             wt             qsec      
+##  Min.   : 52.0   Min.   :2.760   Min.   :1.513   Min.   :14.50  
+##  1st Qu.: 96.5   1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89  
+##  Median :123.0   Median :3.695   Median :3.325   Median :17.71  
+##  Mean   :146.7   Mean   :3.597   Mean   :3.217   Mean   :17.85  
+##  3rd Qu.:180.0   3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90  
+##  Max.   :335.0   Max.   :4.930   Max.   :5.424   Max.   :22.90  
+##                                                                 
+##        vs               am              gear            carb      
+##  Min.   :0.0000   Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+##  1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+##  Median :0.0000   Median :0.0000   Median :4.000   Median :2.000  
+##  Mean   :0.4375   Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+##  3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+##  Max.   :1.0000   Max.   :1.0000   Max.   :5.000   Max.   :8.000  
+## 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>A more complicated example</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>No column names</li>
+<li>pipe-delimited</li>
+<li><code>NA</code> coded as 999</li>
+<li><code>read.csv()</code> won&#39;t work here</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div align = "left">
+<img src = ../assets/img/treesData.png width = 200 height = 600>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <article data-timings="">
+    <ul>
+<li><code>read.table()</code></li>
+<li>Explicit calls to 
+
+<ul>
+<li><code>sep</code>, <code>na</code>, and <code>col.names</code></li>
+</ul></li>
+</ul>
+
+<pre><code class="r">trees &lt;- read.table(&quot;./data/trees.txt&quot;, sep = &quot;|&quot;, na = &quot;999&quot;, 
+  col.names = c(&quot;Girth&quot;, &quot;Height&quot;, &quot;Volume&quot;))
+head(trees)
+</code></pre>
+
+<pre><code>##   Girth Height Volume
+## 1   8.3     NA     NA
+## 2    NA     65   10.3
+## 3    NA     63     NA
+## 4  10.5     72   16.4
+## 5  10.7     NA     NA
+## 6  10.8     NA   19.7
+</code></pre>
+
+<ul>
+<li>Note that the column names are defined as a vector, via <code>c</code>.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Last example: SPSS</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="../assets/img/USViolentActs.png" alt="spss"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">library(foreign)
+violence &lt;- read.spss(&quot;./data/USViolentActs.sav&quot;, to.data.frame = TRUE)
+</code></pre>
+
+<pre><code>## Warning in read.spss(&quot;./data/USViolentActs.sav&quot;, to.data.frame = TRUE): ./
+## data/USViolentActs.sav: Unrecognized record type 7, subtype 18 encountered
+## in system file
+</code></pre>
+
+<pre><code>## Warning in read.spss(&quot;./data/USViolentActs.sav&quot;, to.data.frame = TRUE): ./
+## data/USViolentActs.sav: Unrecognized record type 7, subtype 24 encountered
+## in system file
+</code></pre>
+
+<pre><code class="r">head(violence)
+</code></pre>
+
+<pre><code>##            State Murder Assault UrbanPop Rape
+## 1 Alabama          13.2     236       58 21.2
+## 2 Alaska           10.0     263       48 44.5
+## 3 Arizona           8.1     294       80 31.0
+## 4 Arkansas          8.8     190       50 19.5
+## 5 California        9.0     276       91 40.6
+## 6 Colorado          7.9     204       78 38.7
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>More on reading foreign files</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>It can be a hassle</li>
+<li><em>foreign</em> package (part of the base distribution)
+
+<ul>
+<li>No longer being developed</li>
+<li>Warnings are (for now) ignorable</li>
+<li><code>to.data.frame = TRUE</code> is vital</li>
+</ul></li>
+<li><em>Hmisc</em> package may be a better alternative (I haven&#39;t explored it much, and 
+generally try to avoid SPSS files)</li>
+<li><em>haven</em> is probably the best option
+
+<ul>
+<li>Written by Hadley Wickham (so, basically, it&#39;s trustworthy)</li>
+<li>New package, actively being developed and maintained</li>
+<li>Reads SPSS, SAS, and Stata files</li>
+<li>Defaults lead to data being read in how you expect it to be (generally)</li>
+<li>Includes preliminary support for <em>writing</em> Stat or SPSS files (not SAS,
+yet)</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Example with haven</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"># install.packages(&quot;haven&quot;) # to install the first time
+library(haven)
+viol &lt;- read_spss(&quot;./data/USViolentActs.sav&quot;)
+head(viol)
+</code></pre>
+
+<pre><code>##        State Murder Assault UrbanPop Rape
+## 1    Alabama   13.2     236       58 21.2
+## 2     Alaska   10.0     263       48 44.5
+## 3    Arizona    8.1     294       80 31.0
+## 4   Arkansas    8.8     190       50 19.5
+## 5 California    9.0     276       91 40.6
+## 6   Colorado    7.9     204       78 38.7
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Your turn</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Read in the following files from the <em>data</em> folder</p>
+
+<ul>
+<li>longley.csv</li>
+<li>attitude.txt</li>
+</ul>
+
+<p><span style="color:gray" > (You can work with a partner) </span></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <article data-timings="">
+    <p>The longley file is a csv, with headers, and can be read in pretty simply:</p>
+
+<pre><code class="r">longley &lt;- read.csv(&quot;./data/longley.csv&quot;)
+head(longley)
+</code></pre>
+
+<pre><code>##   Year GNP.deflator     GNP Unemployed Armed.Forces Population Year.1
+## 1 1947         83.0 234.289      235.6        159.0    107.608   1947
+## 2 1948         88.5 259.426      232.5        145.6    108.632   1948
+## 3 1949         88.2 258.054      368.2        161.6    109.773   1949
+## 4 1950         89.5 284.599      335.1        165.0    110.929   1950
+## 5 1951         96.2 328.975      209.9        309.9    112.075   1951
+## 6 1952         98.1 346.999      193.2        359.4    113.270   1952
+##   Employed
+## 1   60.323
+## 2   61.122
+## 3   60.171
+## 4   61.187
+## 5   63.221
+## 6   63.639
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <article data-timings="">
+    <p>The attitude file is a bit more tricky. It&#39;s tab separated. We can use either
+  <code>read.table()</code> or <code>read.delim()</code>.</p>
+
+<pre><code class="r">att &lt;- read.table(&quot;./data/attitude.txt&quot;, sep = &quot;\t&quot;)
+att &lt;- read.delim(&quot;./data/attitude.txt&quot;)
+head(att)
+</code></pre>
+
+<pre><code>##   rating complaints privileges learning raises critical advance
+## 1     43         51         30       39     61       92      45
+## 2     63         64         51       54     63       73      47
+## 3     71         70         68       69     76       86      48
+## 4     61         63         45       47     54       84      35
+## 5     81         78         56       66     71       83      47
+## 6     43         55         49       44     54       49      34
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Subsetting data frames</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Data frames can be subset in numerous ways, including indexing equivalent to 
+matrices</li>
+</ul>
+
+<pre><code class="r">head(cars)
+</code></pre>
+
+<pre><code>##               model  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## 1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## 2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## 3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## 4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## 5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## 6           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+</code></pre>
+
+<ul>
+<li>Select the first 10 rows of the 3rd column</li>
+</ul>
+
+<pre><code class="r">cars[1:10,3]
+</code></pre>
+
+<pre><code>##  [1] 6 6 4 6 8 6 8 4 4 6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <article data-timings="">
+    <p>Select the same elements, but keep the data frame intact</p>
+
+<pre><code class="r">cars[1:10,3, drop = FALSE]
+</code></pre>
+
+<pre><code>##    cyl
+## 1    6
+## 2    6
+## 3    4
+## 4    6
+## 5    8
+## 6    6
+## 7    8
+## 8    4
+## 9    4
+## 10   6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2><code>str()</code> gives us a hint at an alternative subsetting method</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">str(cars)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    32 obs. of  12 variables:
+##  $ model: Factor w/ 32 levels &quot;AMC Javelin&quot;,..: 18 19 5 13 14 31 7 21 20 22 ...
+##  $ mpg  : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl  : int  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp : num  160 160 108 258 360 ...
+##  $ hp   : int  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat : num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt   : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec : num  16.5 17 18.6 19.4 17 ...
+##  $ vs   : int  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am   : int  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear : int  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb : int  4 4 1 1 2 1 4 2 2 4 ...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Selecting columns by name</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The <code>$</code> operator can also be used to select columns</p>
+
+<ul>
+<li>Select the <code>mpg</code> variable/column</li>
+</ul>
+
+<pre><code class="r">cars$mpg
+</code></pre>
+
+<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
+## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
+## [29] 15.8 19.7 15.0 21.4
+</code></pre>
+
+<ul>
+<li>Select the <code>cyl</code> variable/column</li>
+</ul>
+
+<pre><code class="r">cars$cyl
+</code></pre>
+
+<pre><code>##  [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>A few more subsetting notes</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>Names can also be used within the <code>[]</code>, as long as they are supplied as a 
+string</li>
+<li><p>Multiple columns can be selected in this manner if a vector of names is 
+supplied</p>
+
+<ul>
+<li>vectors are returned if you are using the <code>row , column</code> notation with a 
+single variable and you do not specifiy <code>drop = FALSE</code></li>
+<li>data frame maintained if only the names are supplied</li>
+</ul></li>
+<li><p>The following two lines of code are equivalent</p></li>
+</ul>
+
+<pre><code class="r">cars[c(&quot;mpg&quot;,&quot;cyl&quot;)]
+cars[ ,c(&quot;mpg&quot;,&quot;cyl&quot;)]
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li>As are these</li>
+</ul>
+
+<pre><code class="r">cars[&quot;mpg&quot;]
+cars[ ,&quot;mpg&quot;, drop = FALSE]
+</code></pre>
+
+<ul>
+<li>However, these are not</li>
+</ul>
+
+<pre><code class="r">cars[&quot;mpg&quot;]
+cars[ ,&quot;mpg&quot;]
+</code></pre>
+
+<ul>
+<li>The first maintains the data frame, while the second returns a vector</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Example</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <pre><code class="r">cars[&quot;mpg&quot;]
+</code></pre>
+
+<pre><code>##     mpg
+## 1  21.0
+## 2  21.0
+## 3  22.8
+## 4  21.4
+## 5  18.7
+## 6  18.1
+## 7  14.3
+## 8  24.4
+## 9  22.8
+## 10 19.2
+## 11 17.8
+## 12 16.4
+## 13 17.3
+## 14 15.2
+## 15 10.4
+## 16 10.4
+## 17 14.7
+## 18 32.4
+## 19 30.4
+## 20 33.9
+## 21 21.5
+## 22 15.5
+## 23 15.2
+## 24 13.3
+## 25 19.2
+## 26 27.3
+## 27 26.0
+## 28 30.4
+## 29 15.8
+## 30 19.7
+## 31 15.0
+## 32 21.4
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">cars[ ,&quot;mpg&quot;]
+</code></pre>
+
+<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
+## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
+## [29] 15.8 19.7 15.0 21.4
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Logical subsetting can also be used with data frames</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mpg25up &lt;- cars$mpg &gt; 25
+cars[mpg25up, ]
+</code></pre>
+
+<pre><code>##             model  mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## 18       Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## 19    Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## 20 Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+## 26      Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+## 27  Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+## 28   Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+</code></pre>
+
+<pre><code class="r">cars[cars$mpg &gt; 25 &amp; cars$gear == 5, ]
+</code></pre>
+
+<pre><code>##            model  mpg cyl  disp  hp drat    wt qsec vs am gear carb
+## 27 Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+## 28  Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>How do these logical subsets work?</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">cars$mpg &gt; 25
+</code></pre>
+
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [12] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE
+## [23] FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
+</code></pre>
+
+<pre><code class="r">cars$mpg &gt; 25 &amp; cars$gear == 5
+</code></pre>
+
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [23] FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>Final note on subsetting</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The <code>subset()</code> function can be very useful for subsetting vectors, matrices, 
+or data frames</li>
+</ul>
+
+<pre><code class="r">?subset
+</code></pre>
+
+<div align = "center">
+<img src = ../assets/img/subsetHelp.png width = 1000 height = 650>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>Examples of <code>subset</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>x</code> = object to subset</li>
+<li><code>subset</code> logical vector</li>
+<li><code>select</code> optionally used to select columns</li>
+</ul>
+
+<div style='float:left;width:48%;'>
+  <pre><code class="r">subset(cars, 
+  subset = mpg &gt; 25, 
+  select = c(&quot;model&quot;, &quot;mpg&quot;, &quot;hp&quot;))
+</code></pre>
+
+<pre><code>##             model  mpg  hp
+## 18       Fiat 128 32.4  66
+## 19    Honda Civic 30.4  52
+## 20 Toyota Corolla 33.9  65
+## 26      Fiat X1-9 27.3  66
+## 27  Porsche 914-2 26.0  91
+## 28   Lotus Europa 30.4 113
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">subset(cars, hp &gt; 220)
+</code></pre>
+
+<pre><code>##                model  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## 7         Duster 360 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4
+## 17 Chrysler Imperial 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4
+## 24        Camaro Z28 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4
+## 29    Ford Pantera L 15.8   8  351 264 4.22 3.170 14.50  0  1    5    4
+## 31     Maserati Bora 15.0   8  301 335 3.54 3.570 14.60  0  1    5    8
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>Writing Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Write text files with essentially the same process, using <code>write.table()</code> or
+<code>write.csv()</code></li>
+</ul>
+
+<p><img src="../assets/img/writeTable.png" alt="writeTable"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Write csv file</li>
+</ul>
+
+<pre><code class="r">write.csv(cars, file = &quot;carsData.csv&quot;, row.names = FALSE)
+</code></pre>
+
+<ul>
+<li>Write dat file for mplus</li>
+</ul>
+
+<pre><code class="r">write.table(cars, file = &quot;carsData.dat&quot;, 
+  sep = &quot;\t&quot;, 
+  col.names = FALSE,
+  row.names = FALSE,
+  na = &quot;999&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Write an R file</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">save(cars, file = &quot;carsData.Rda&quot;)
+</code></pre>
+
+<p>Loading the data is then really easy</p>
+
+<pre><code class="r">load(&quot;carsData.Rda&quot;)
+</code></pre>
+
+<pre><code class="r">head(cars)
+</code></pre>
+
+<pre><code>##               model  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## 1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## 2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## 3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## 4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## 5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## 6           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>A note on writing R files</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>When you load the <code>carsData.Rda</code> file, the object <code>cars</code> is loaded (i.e., it
+is not <code>carsData</code>). The reason is the file is <code>carsData</code>, but the object saved
+was <code>cars</code>. It&#39;s often helpful to keep them the same.</li>
+</ul>
+
+<pre><code class="r">carsData &lt;- cars
+save(carsData, file = &quot;carsData.Rda&quot;)
+</code></pre>
+
+<ul>
+<li>Other options (both readable by text editors)
+
+<ul>
+<li><code>dump()</code></li>
+<li><code>dput()</code> </li>
+</ul></li>
+</ul>
+
+<p>For the most part, I&#39;d recommend either writing a text file or an r-specific 
+  <code>.Rda</code> file.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-37" style="background:;">
+  <hgroup>
+    <h1>Data structures</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>Data structures</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th align="left">Dimensions</th>
+<th align="left">Homogenous</th>
+<th align="left">Heterogeneous</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Atomic Vector</td>
+<td align="left">List</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Matrix</td>
+<td align="left">Data frame</td>
+</tr>
+<tr>
+<td align="left">n</td>
+<td align="left">Array</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<ul>
+<li>Note: Table taken from Wickham (2015)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>Properties of Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Type</h1>
+
+<ul>
+<li>Type of elements stored in the vector
+
+<ul>
+<li>use <code>typeof()</code> or <code>is.character()</code>, <code>is.integer()</code>, etc.</li>
+</ul></li>
+</ul>
+
+<h1>Length</h1>
+
+<ul>
+<li>Number of elements in the vector
+
+<ul>
+<li>use <code>length()</code></li>
+</ul></li>
+</ul>
+
+<h1>Attributes</h1>
+
+<ul>
+<li>Arbitrary metadata
+
+<ul>
+<li>use <code>attributes()</code> and/or <code>attr()</code></li>
+</ul></li>
+<li>What&#39;s metadata
+
+<ul>
+<li>data about the data (i.e., information that describes the data)</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>Atomic Vectors vs Lists</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li><p>Atomic</p>
+
+<ul>
+<li>All elements of the same type</li>
+</ul></li>
+<li><p>Lists</p>
+
+<ul>
+<li>Element types differ</li>
+</ul></li>
+</ul>
+
+<p><br></p>
+
+<p>Lists are incredibly useful, but decidedly more complicated. We&#39;ll only touch on them briefly. </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">atomic &lt;- c(1, 7, 9, 23, 5)
+atomic
+</code></pre>
+
+<pre><code>## [1]  1  7  9 23  5
+</code></pre>
+
+<pre><code class="r">lst &lt;- list(&quot;a&quot;, 2, TRUE)
+lst
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] &quot;a&quot;
+## 
+## [[2]]
+## [1] 2
+## 
+## [[3]]
+## [1] TRUE
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>Data types</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>Double
+
+<ul>
+<li>numeric with arbitrary precision</li>
+</ul></li>
+<li>Integer
+
+<ul>
+<li>numeric whole number</li>
+</ul></li>
+<li>Logical
+
+<ul>
+<li>true/false</li>
+</ul></li>
+<li>Character
+
+<ul>
+<li>string elements</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">dbl &lt;- c(1.357, 2, 4.67)
+int &lt;- c(2L, 5L, 7L, 1L)
+log &lt;- c(TRUE, FALSE, T, F)
+chr &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+</code></pre>
+
+<p>Note the specific &quot;L&quot; placed after each number on the integer vector to coerce
+  the elements to integer, rather than double.</p>
+
+<pre><code class="r">int
+</code></pre>
+
+<pre><code>## [1] 2 5 7 1
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-42" style="background:;">
+  <hgroup>
+    <h2>Determining and Testing Types</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <pre><code class="r">typeof(dbl)
+</code></pre>
+
+<pre><code>## [1] &quot;double&quot;
+</code></pre>
+
+<pre><code class="r">is.double(dbl)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<pre><code class="r">is.integer(dbl)
+</code></pre>
+
+<pre><code>## [1] FALSE
+</code></pre>
+
+<pre><code class="r">is.atomic(dbl)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h1>Be careful of more generic tests</h1>
+
+<pre><code class="r">is.numeric(dbl)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<pre><code class="r">is.numeric(int)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    <h2>Check in</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>What data types are the following vectors?</li>
+</ul>
+
+<pre><code class="r">w &lt;- c(TRUE, FALSE, FALSE, TRUE)
+x &lt;- c(3, 5, 8, 9, 2.5)
+y &lt;- c(&quot;green&quot;, &quot;red&quot;, &quot;blue&quot;)
+z &lt;- c(5L, 7L, 2L, 18L)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-44" style="background:;">
+  <hgroup>
+    <h2>Coercion</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Take a guess: What will the following vectors produce?</h1>
+
+<pre><code class="r">w &lt;- c(&quot;1&quot;, 2, 3)
+x &lt;- c(1, TRUE, FALSE)
+y &lt;- c(3.25, 5L, 7L)
+z &lt;- c(&quot;a&quot;, &quot;b&quot;, 7, TRUE)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-45" style="background:;">
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <pre><code class="r">c(&quot;1&quot;, 2, 3); is.character(w)
+</code></pre>
+
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<pre><code class="r">c(1, TRUE, FALSE); is.double(x)
+</code></pre>
+
+<pre><code>## [1] 1 1 0
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">c(3.25, 5L, 7L); is.double(y)
+</code></pre>
+
+<pre><code>## [1] 3.25 5.00 7.00
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<pre><code class="r">c(&quot;a&quot;, &quot;b&quot;, 7, TRUE); is.character(z)
+</code></pre>
+
+<pre><code>## [1] &quot;a&quot;    &quot;b&quot;    &quot;7&quot;    &quot;TRUE&quot;
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-46" style="background:;">
+  <hgroup>
+    <h2>Coercion rules</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Remember: Atomic vectors must contain data of the same type.</p>
+
+<ul>
+<li>Most flexible: Character</li>
+<li>Least flexible: Logical</li>
+</ul>
+
+<p>When logical vectors are coerced to be numeric, <code>TRUE</code> are coded 1, and <code>FALSE</code>
+  are coded 0.</p>
+
+<p>Explicitely coerce via <code>as.___</code>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-47" style="background:;">
+  <hgroup>
+    <h2>Explicit coercion</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <h1>Override default coercions</h1>
+
+<pre><code class="r">c(FALSE,1,TRUE,0)
+</code></pre>
+
+<pre><code>## [1] 0 1 1 0
+</code></pre>
+
+<pre><code class="r">as.logical(c(FALSE,1,TRUE,0))
+</code></pre>
+
+<pre><code>## [1] FALSE  TRUE  TRUE FALSE
+</code></pre>
+
+<pre><code class="r">c(&quot;1&quot;, 2, 3)
+</code></pre>
+
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;
+</code></pre>
+
+<pre><code class="r">as.double(c(&quot;1&quot;, 2, 3))
+</code></pre>
+
+<pre><code>## [1] 1 2 3
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h1>Convert to specific type</h1>
+
+<pre><code class="r">as.character(1:5)
+</code></pre>
+
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot;
+</code></pre>
+
+<p><br></p>
+
+<h1>Careful with specific coercsions</h1>
+
+<pre><code class="r">c(&quot;a&quot;, &quot;b&quot;, 7, &quot;TRUE&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;a&quot;    &quot;b&quot;    &quot;7&quot;    &quot;TRUE&quot;
+</code></pre>
+
+<pre><code class="r">as.integer(c(&quot;a&quot;, &quot;b&quot;, 7, &quot;TRUE&quot;))
+</code></pre>
+
+<pre><code>## Warning: NAs introduced by coercion
+</code></pre>
+
+<pre><code>## [1] NA NA  7 NA
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-48" style="background:;">
+  <hgroup>
+    <h2>Check in</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Predict how each vector will be coerced.</li>
+</ul>
+
+<pre><code class="r">c(1, FALSE)
+c(&quot;a&quot;, TRUE)
+c(&quot;b&quot;, 1L)
+c(1L, 2)
+</code></pre>
+
+<hr>
+
+<h1>Why does this all matter?</h1>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-49" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">c(1, FALSE)
+</code></pre>
+
+<pre><code>## [1] 1 0
+</code></pre>
+
+<pre><code class="r">c(&quot;a&quot;, TRUE)
+</code></pre>
+
+<pre><code>## [1] &quot;a&quot;    &quot;TRUE&quot;
+</code></pre>
+
+<pre><code class="r">c(&quot;b&quot;, 1L)
+</code></pre>
+
+<pre><code>## [1] &quot;b&quot; &quot;1&quot;
+</code></pre>
+
+<pre><code class="r">c(1L, 2)
+</code></pre>
+
+<pre><code>## [1] 1 2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-50" style="background:;">
+  <article data-timings="">
+    <p><img src="./../assets/img/bikeAttr.png" alt="bikeAttr"></p>
+
+<h1>Attributes</h1>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-51" style="background:;">
+  <hgroup>
+    <h2>Important attributes</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>names()</code>, <code>colnames()</code>, <code>rownames()</code></li>
+<li>Dimensions (used to convert vectors to matrices and arrays)</li>
+<li>Class: points R to correct functions to execute (e.g., <code>print()</code>, <code>plot()</code>, 
+etc.)</li>
+</ul>
+
+<p>What is an attribute? Metadata (data about the data) for an object.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-52" style="background:;">
+  <hgroup>
+    <h1><code>names()</code></h1>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>Names can be assigned to an object in a couple different ways.</li>
+</ul>
+
+<pre><code class="r">y &lt;- c(&quot;A&quot; = 1, &quot;B&quot; = 2, &quot;C&quot; = 3)
+y
+</code></pre>
+
+<pre><code>## A B C 
+## 1 2 3
+</code></pre>
+
+<pre><code class="r">names(y)
+</code></pre>
+
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">z &lt;- 1:3
+z
+</code></pre>
+
+<pre><code>## [1] 1 2 3
+</code></pre>
+
+<pre><code class="r">names(z) &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)
+z
+</code></pre>
+
+<pre><code>## A B C 
+## 1 2 3
+</code></pre>
+
+<pre><code class="r">names(z)
+</code></pre>
+
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-53" style="background:;">
+  <hgroup>
+    <h2>Factors</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Used to store categorical data</li>
+<li>Can only store predefined values</li>
+<li>String variables default to factors when reading in data </li>
+</ul>
+
+<pre><code class="r">colors &lt;- factor(c(&quot;black&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;blue&quot;, &quot;black&quot;))
+attributes(colors)
+</code></pre>
+
+<pre><code>## $levels
+## [1] &quot;black&quot; &quot;blue&quot;  &quot;green&quot;
+## 
+## $class
+## [1] &quot;factor&quot;
+</code></pre>
+
+<pre><code class="r">str(colors)
+</code></pre>
+
+<pre><code>##  Factor w/ 3 levels &quot;black&quot;,&quot;blue&quot;,..: 1 3 2 2 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-54" style="background:;">
+  <hgroup>
+    <h2>Adding elements to factors</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">colors[6] &lt;- &quot;blue&quot;
+colors
+</code></pre>
+
+<pre><code>## [1] black green blue  blue  black blue 
+## Levels: black blue green
+</code></pre>
+
+<pre><code class="r">colors[7] &lt;- &quot;purple&quot;
+</code></pre>
+
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7, value = &quot;purple&quot;): invalid factor
+## level, NA generated
+</code></pre>
+
+<pre><code class="r">colors
+</code></pre>
+
+<pre><code>## [1] black green blue  blue  black blue  &lt;NA&gt; 
+## Levels: black blue green
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-55" style="background:;">
+  <hgroup>
+    <h2>Benefits of factors</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>No need for multiple variables to define a categorical variable: internal 
+dummy-coding</li>
+</ul>
+
+<pre><code class="r">contrasts(colors)
+</code></pre>
+
+<pre><code>##       blue green
+## black    0     0
+## blue     1     0
+## green    0     1
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li>Change the reference group by defining a new contrast matrix. For example, we 
+can set green to the reference group with the following code.</li>
+</ul>
+
+<pre><code class="r">contrasts(colors) &lt;- matrix(
+  c(1, 0,
+    0, 1,
+    0, 0),
+byrow = TRUE, ncol = 2)
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-56" style="background:;">
+  <hgroup>
+    <h1>Contrast coding (continued)</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Alternatively, use some of the built in functions for defining new contrasts 
+  matrices </p>
+
+<div style='float:left;width:48%;'>
+  <pre><code class="r">contr.helmert(3)
+</code></pre>
+
+<pre><code>##   [,1] [,2]
+## 1   -1   -1
+## 2    1   -1
+## 3    0    2
+</code></pre>
+
+<pre><code class="r">contr.sum(3)
+</code></pre>
+
+<pre><code>##   [,1] [,2]
+## 1    1    0
+## 2    0    1
+## 3   -1   -1
+</code></pre>
+
+<p><br>
+(see: <a href="http://www.ats.ucla.edu/stat/r/library/contrast_coding.htm">http://www.ats.ucla.edu/stat/r/library/contrast_coding.htm</a>)</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">contrasts(colors) &lt;- contr.helmert(3)
+contrasts(colors)
+</code></pre>
+
+<pre><code>##       [,1] [,2]
+## black   -1   -1
+## blue     1   -1
+## green    0    2
+</code></pre>
+
+<pre><code class="r">contrasts(colors) &lt;- contr.sum(3)
+contrasts(colors)
+</code></pre>
+
+<pre><code>##       [,1] [,2]
+## black    1    0
+## blue     0    1
+## green   -1   -1
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-57" style="background:;">
+  <hgroup>
+    <h2>Factors and attributes</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Factors are atomic integer vectors with a &quot;levels&quot; attribute.</li>
+</ul>
+
+<pre><code class="r">is.atomic(colors)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<pre><code class="r">typeof(colors)
+</code></pre>
+
+<pre><code>## [1] &quot;integer&quot;
+</code></pre>
+
+<p>Note: Be careful with <code>is.vector()</code>. It only returns <code>TRUE</code> if the vector has no
+  attributes outside of names</p>
+
+<pre><code class="r">is.vector(colors)
+</code></pre>
+
+<pre><code>## [1] FALSE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-58" style="background:;">
+  <hgroup>
+    <h2>Dimension attribute</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>The way we have created matrices in the past in through the <code>matrix</code> function</p>
+
+<pre><code class="r">m &lt;- matrix(1:12, ncol = 3)
+m
+</code></pre>
+
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    5    9
+## [2,]    2    6   10
+## [3,]    3    7   11
+## [4,]    4    8   12
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>The object <code>m</code> is really just an atomic vector with a dimension attribute</p>
+
+<pre><code class="r">attributes(m)
+</code></pre>
+
+<pre><code>## $dim
+## [1] 4 3
+</code></pre>
+
+<pre><code class="r">is.atomic(m)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-59" style="background:;">
+  <hgroup>
+    <h2>Alternative construction of the same matrix</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <h1>Construct matrix</h1>
+
+<pre><code class="r">m &lt;- 1:12
+m
+</code></pre>
+
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
+</code></pre>
+
+<pre><code class="r">dim(m) &lt;- c(4, 3)
+m
+</code></pre>
+
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    5    9
+## [2,]    2    6   10
+## [3,]    3    7   11
+## [4,]    4    8   12
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h1>Add row and column names</h1>
+
+<pre><code class="r">rownames(m) &lt;- c(&quot;r1&quot;, &quot;r2&quot;, &quot;r3&quot;, &quot;r4&quot;)
+m
+</code></pre>
+
+<pre><code>##    [,1] [,2] [,3]
+## r1    1    5    9
+## r2    2    6   10
+## r3    3    7   11
+## r4    4    8   12
+</code></pre>
+
+<pre><code class="r">colnames(m) &lt;- c(&quot;c1&quot;, &quot;c2&quot;, &quot;c3&quot;)
+m
+</code></pre>
+
+<pre><code>##    c1 c2 c3
+## r1  1  5  9
+## r2  2  6 10
+## r3  3  7 11
+## r4  4  8 12
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-60" style="background:;">
+  <hgroup>
+    <h2>Construct matrix, but fill by row</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <h1>Construct the transpose of the matrix</h1>
+
+<pre><code class="r">m &lt;- 1:12
+dim(m) &lt;- c(3, 4)
+m
+</code></pre>
+
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h1>Transpose the matrix</h1>
+
+<pre><code class="r">m &lt;- t(m)
+m
+</code></pre>
+
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## [4,]   10   11   12
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-61" style="background:;">
+  <hgroup>
+    <h2>Arrays: &quot;Layered&quot; Matrices</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">a &lt;- 1:16
+dim(a) &lt;- c(2, 2, 4)
+a
+</code></pre>
+
+<p>This is a 3-dimensional array, but more dimensions are possible</p>
+
+<div style='float:left;width:48%;'>
+  <pre><code>## , , 1
+## 
+##      [1,] [2,]
+## [1,]    1    3
+## [2,]    2    4
+## 
+## , , 2
+## 
+##      [1,] [2,]
+## [1,]    5    7
+## [2,]    6    8
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code>## , , 3
+## 
+##      [1,] [2,]
+## [1,]    9   11
+## [2,]   10   12
+## 
+## , , 4
+## 
+##      [1,] [2,]
+## [1,]   13   15
+## [2,]   14   16
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-62" style="background:;">
+  <hgroup>
+    <h2>When would you use arrays?</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>One example: Differential item functioning</h1>
+
+<div style='float:left;width:48%;'>
+  <pre><code>## , , Score = 0
+## 
+##           Male Female
+## Incorrect   38     34
+## Correct     66     85
+## 
+## , , Score = 1
+## 
+##           Male Female
+## Incorrect   22     52
+## Correct     40     54
+## 
+## , , Score = 2
+## 
+##           Male Female
+## Incorrect   57     41
+## Correct     23     39
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code>## , , Score = 3
+## 
+##           Male Female
+## Incorrect   35     36
+## Correct     45     53
+## 
+## , , Score = 4
+## 
+##           Male Female
+## Incorrect   52     53
+## Correct     44     38
+## 
+## , , Score = 5
+## 
+##           Male Female
+## Incorrect   76     32
+## Correct     38     41
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-63" style="background:;">
+  <hgroup>
+    <h2>More on the names attributes</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For atomic vectors, and specifically matrices, <code>rownames()</code> and <code>colnames()</code> 
+  must be used, rather than <code>names()</code>. The <code>names()</code> attribute is for individual elements.</p>
+
+<pre><code class="r">names(m)
+</code></pre>
+
+<pre><code>## NULL
+</code></pre>
+
+<pre><code class="r">names(m) &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+attr(m, &quot;names&quot;)
+</code></pre>
+
+<pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; NA  NA  NA  NA  NA  NA  NA  NA  NA
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-64" style="background:;">
+  <hgroup>
+    <h2>Names attributes (continued)</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>After row, column, and element names are assigned, they can be used in 
+  subsetting</p>
+
+<pre><code class="r">m[&quot;r1&quot;, ]
+</code></pre>
+
+<pre><code>## Error in m[&quot;r1&quot;, ]: no &#39;dimnames&#39; attribute for array
+</code></pre>
+
+<pre><code class="r">m[&quot;r3&quot;,&quot;c2&quot;] 
+</code></pre>
+
+<pre><code>## Error in m[&quot;r3&quot;, &quot;c2&quot;]: no &#39;dimnames&#39; attribute for array
+</code></pre>
+
+<pre><code class="r">m[&quot;b&quot;] 
+</code></pre>
+
+<pre><code>## b 
+## 4
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>You can also specify the row and column names via <code>dimnames()</code> and a list of 
+  vectors (ordered by row names, then column names, then the 3rd dimension for 
+  arrays)</p>
+
+<pre><code class="r">dimnames(m) &lt;- list(
+  c(&quot;row1&quot;, &quot;row2&quot;, &quot;row3&quot;, &quot;row4&quot;), 
+  c(&quot;col1&quot;, &quot;col2&quot;, &quot;col3&quot;)
+          )
+m
+</code></pre>
+
+<pre><code>##      col1 col2 col3
+## row1    1    2    3
+## row2    4    5    6
+## row3    7    8    9
+## row4   10   11   12
+## attr(,&quot;names&quot;)
+##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; NA  NA  NA  NA  NA  NA  NA  NA  NA
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-65" style="background:;">
+  <hgroup>
+    <h2>Final notes on attributes</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>When you modify a vector, the attributes are generally lost.</p>
+
+<pre><code class="r">attributes(sum(m))
+</code></pre>
+
+<pre><code>## NULL
+</code></pre>
+
+<p>But in some cases you may want to strip the attributes from an object. You can 
+  do this by setting the attributes to <code>NULL</code>.</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>To remove the dimension names</p>
+
+<pre><code class="r">attr(m, &quot;dimnames&quot;) &lt;- NULL
+m
+</code></pre>
+
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## [4,]   10   11   12
+## attr(,&quot;names&quot;)
+##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; NA  NA  NA  NA  NA  NA  NA  NA  NA
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-66" style="background:;">
+  <article data-timings="">
+    <p>To remove all the attributes, and return to a basic vector</p>
+
+<pre><code class="r">attributes(m) &lt;- NULL
+m
+</code></pre>
+
+<pre><code>##  [1]  1  4  7 10  2  5  8 11  3  6  9 12
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-67" style="background:;">
+  <hgroup>
+    <h2>Let&#39;s try</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><p>Create the following vector
+\[
+\begin{equation*}
+\textbf{vect} = \qquad 
+\begin{bmatrix}
+23 & 41 & 18 & 27 & 16 & 11 & 72 & 29 & 18 & 51 & 32 & 63
+\end{bmatrix}
+\end{equation*}
+\]</p></li>
+<li><p>Use attributes to transform it to the following matrix
+\[
+\begin{equation*}
+\textbf{mat} = \qquad 
+\begin{bmatrix}
+23 & 27 & 72 & 51 \\
+41 & 16 & 29 & 32 \\ 
+18 & 11 & 18 & 63
+\end{bmatrix}
+\end{equation*}
+\]</p></li>
+<li><p>Provide some arbitrary row and column names</p></li>
+<li><p>Use attributes to transform \(\textbf{vect}\) into a \(3 * 2 * 2\) array</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Looking into a working directory'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Navigating your directory quickly'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Reading Data into R'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='My advice'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='What data can be read into R?'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Diving deeper into reading data with R'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Important Arguments'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Examples'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Examples'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='NA'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='NA'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Learn more with <code>summary()</code>'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='A more complicated example'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='NA'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Last example: SPSS'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='NA'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='More on reading foreign files'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Example with haven'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Your turn'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='NA'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='NA'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Subsetting data frames'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='NA'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='<code>str()</code> gives us a hint at an alternative subsetting method'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Selecting columns by name'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='A few more subsetting notes'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Example'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Logical subsetting can also be used with data frames'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='How do these logical subsets work?'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Final note on subsetting'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Examples of <code>subset</code>'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Writing Data'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Example'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Write an R file'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='A note on writing R files'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Data structures'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Data structures'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Properties of Vectors'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Atomic Vectors vs Lists'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Data types'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='Determining and Testing Types'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Check in'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Coercion'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='NA'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='Coercion rules'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Explicit coercion'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Check in'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='NA'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='NA'>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='Important attributes'>
+         51
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=52 title='<code>names()</code>'>
+         52
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=53 title='Factors'>
+         53
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=54 title='Adding elements to factors'>
+         54
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=55 title='Benefits of factors'>
+         55
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=56 title='Contrast coding (continued)'>
+         56
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=57 title='Factors and attributes'>
+         57
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=58 title='Dimension attribute'>
+         58
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=59 title='Alternative construction of the same matrix'>
+         59
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=60 title='Construct matrix, but fill by row'>
+         60
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=61 title='Arrays: &quot;Layered&quot; Matrices'>
+         61
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=62 title='When would you use arrays?'>
+         62
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=63 title='More on the names attributes'>
+         63
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=64 title='Names attributes (continued)'>
+         64
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=65 title='Final notes on attributes'>
+         65
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=66 title='NA'>
+         66
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=67 title='Let&#39;s try'>
+         67
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

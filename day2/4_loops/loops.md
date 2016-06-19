@@ -2432,7 +2432,7 @@ plot(pars)
 
 
 ```r
-plot(pars, type = "ICCs", colors = colorRamps::rgb.tables(25))
+plot(pars, type = "ICCs", colors = colorRamps::rgb.tables(25), lwd = 2)
 ```
 
 ![plot of chunk r2WinstepsPlot2](assets/fig/r2WinstepsPlot2-1.png)
